@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866668 33.866668"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   sodipodi:docname="blobfox.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title30762">blobfox</title>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4"
+     inkscape:cx="55.125"
+     inkscape:cy="109.625"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="0"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     units="px">
+    <inkscape:grid
+       type="xygrid"
+       id="grid10" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="ref"
+     style="display:none">
+    <image
+       width="33.866665"
+       height="33.866665"
+       preserveAspectRatio="none"
+       style="fill:#313131;fill-opacity:1;stroke:none;image-rendering:optimizeQuality"
+       xlink:href="../../Downloads/blobfox.png"
+       id="image80"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:label="Base"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 24.060077,8.5199259 c 2.928007,-4.7550102 5.325045,-7.689748 7.809988,-7.62855728 2.484943,0.0611907 0.664265,7.56804148 -0.509611,9.14994438 -1.173877,1.581904 -0.867053,4.483797 -1.390169,4.642182 -0.523116,0.158385 -0.964927,-3.370093 -1.373949,-3.571849 -0.409025,-0.201756 -2.802954,0.537211 -3.055588,-0.0525 -0.252635,-0.589708 1.495879,-2.4562704 -1.480671,-2.5392241 z"
+       id="path18942" />
+    <path
+       style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.4501"
+       d="m 20.504579,7.9389937 c 4.005866,-5.5374657 8.977346,-7.4821359 11.391849,-7.77998086 2.414503,-0.29784496 1.846365,2.48682936 1.822976,3.42718456 -0.0448,1.8011913 -0.597222,5.8387758 -1.588486,9.0269186 -0.564421,1.815314 -0.935755,2.379644 -1.433874,2.375561 -0.728413,-0.006 -0.725704,-0.535339 -0.74823,-1.171218 -0.09504,-2.682997 1.473465,-4.2065536 2.372127,-6.7033057 C 32.700114,5.7185658 33.04191,1.944975 32.627734,1.2271453 32.213558,0.50931548 29.812445,1.4947372 28.864411,2.4287575 27.916378,3.3627779 26.680509,4.1250444 26.157894,6.3687509 25.63528,8.6124575 22.662717,9.2173166 20.504579,7.9389937"
+       id="path14428"
+       sodipodi:nodetypes="cssssscsssc" />
+    <path
+       style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 4.3137226,11.778813 C 1.9838307,6.3895666 2.145295,1.2059319 2.6452072,0.51782863 3.0391093,-0.02435716 3.3041475,-0.15736443 3.9502132,0.20050729 4.7128691,0.62296126 7.6687459,3.5753608 11.56213,6.108751 10.006292,6.1610915 9.1127822,6.3513525 8.0780598,6.7680622 10.00502,7.1784144 9.9184621,7.1327658 11.377083,7.6729166 7.6803703,7.9244796 6.2213245,9.6296562 4.3137226,11.778813 Z"
+       id="path20678"
+       sodipodi:nodetypes="csscccc" />
+    <path
+       id="path117"
+       style="fill:#ff8702;fill-opacity:1;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.4501"
+       d="m 43,11 c 3.459591,7.026728 4.491656,8.123889 10,15 C 44,21 34.53125,23.580078 30.53125,25.580078 38.366168,27.064911 43,29 43,29 20.585626,28.836629 1.527486,58.455986 0,95 c 0,0 0.14555099,8.03117 2.203125,14.33203 5.6666732,6.49391 20.789398,15.3256 40.376953,17.79492 18.881266,2.38028 43.113333,-0.44591 58.314452,-3.86328 15.20113,-3.41737 22.82639,-13.27959 23.81641,-15.80664 0.99,-2.52705 0.10795,-7.720166 -0.5586,-9.939452 -0.81185,-2.70308 -2.0586,-6.277707 -0.39843,-11.148437 1.66016,-4.87073 5.18739,-24.617895 -2.31422,-38.697519 -0.99949,2.902349 -3.43226,11.875962 -7.41131,7.694664 -3.71304,-3.901762 -3.04712,-10.480798 -3.36627,-16.499994 -3.71626,1.909417 -9.31174,2.5017 -12.28621,1.66323 0.748507,-2.340513 1.97936,-5.718759 3.59184,-11.064956 -4.874579,1.613127 -10.410792,2.228254 -14.435704,2.776966 -3.795131,0.517387 -7.060429,-0.269203 -10.034413,-2.235886 2.531539,-3.768595 3.493469,-4.931643 7.506283,-9.134552 -5.953077,-3.09454 -10.025424,-5.624611 -14.203125,-7.396485 0.383018,2.697734 1.167378,4.758786 2.082031,7.9375 C 65.403279,16.448319 57.073951,12.527138 43,11 Z"
+       transform="scale(0.26458333)"
+       sodipodi:nodetypes="ccccccssssscscccsccccc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Features">
+    <path
+       style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.46432"
+       d="m 7.3527787,14.424665 c 0.1797912,-1.565032 1.4709763,-2.669662 2.4784762,-2.637439 1.0481491,0.03352 1.7111831,1.106758 1.6559461,1.895304 -0.109337,1.560853 -0.980796,2.946701 -2.4842238,2.935699 -0.9121407,-0.0067 -1.7841833,-1.027265 -1.6501985,-2.193564 z"
+       id="path22173"
+       sodipodi:nodetypes="sssss" />
+    <path
+       style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.46432"
+       d="m 19.490943,16.103085 c 0.179791,-1.80508 1.475044,-2.789355 2.482544,-2.757132 1.04815,0.03352 1.921875,1.215376 1.852143,2.278752 -0.113562,1.731761 -1.084893,2.877453 -2.588321,2.866451 -0.912141,-0.0067 -1.862721,-1.219882 -1.746366,-2.388071 z"
+       id="path22173-3"
+       sodipodi:nodetypes="sssss" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#313131;stroke-width:1.165;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 8.9038328,21.207191 C 8.4154886,20.200027 8.4083857,19.210862 9.0434442,18.546508 9.6785027,17.882154 11.081313,16.998296 10.991432,13.872278"
+       id="path27175"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 10.675849,19.175188 c 0.955611,-0.521313 3.849322,-0.706251 4.516746,0.681514 0.106717,0.221894 -1.618122,1.890181 -2.674108,1.887838 -1.02104,-0.0023 -2.08232,-2.438598 -1.842638,-2.569352 z"
+       id="path28517"
+       sodipodi:nodetypes="ssss" />
+    <path
+       style="fill:none;stroke:#313131;stroke-width:1.165;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 8.0248092,22.612995 c 0.548615,1.686713 1.0637781,2.752111 1.5767164,3.423841 0.9923844,-0.828422 2.2592704,-1.977918 2.7613864,-2.480155 0.783749,1.274883 1.856673,2.745088 2.294365,3.345841 1.285631,-1.024786 2.518532,-2.115492 3.025709,-2.688925"
+       id="path29369"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+  <metadata
+     id="metadata30760">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Feuerfuchs (feuerfuchs.dev), licensed under the Apache 2.0 License</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:title>blobfox</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Shad Amethyst (convert to svg)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
