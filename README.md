@@ -45,3 +45,5 @@ This means that:
   as these website either don't care about copyright ownership or have a questionable licensing record.
 - Contributions derived from assets and images from the above websites are likewise not welcome;
   as a rule of thumb, asset contributions should only base themselves on what is present in this repository.
+
+For svg files, please include the [svg-default-metadata.xml](./svg-default-metadata.xml) file in the svg file.
