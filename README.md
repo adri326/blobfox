@@ -13,7 +13,7 @@ Automation is key for that, and a solution that can generate clean (both in term
 
 If you enjoy this project, then come say hi here:
 
-- [subreddit dedicated to this project](https://reddit.com/blobfox)
+- [subreddit dedicated to this project](https://reddit.com/r/blobfox)
 - matrix room (TODO)
 
 ## Installation and usage
