@@ -9,6 +9,11 @@ This repository also contains additional blobfoxes, blobcats and other blob anim
 The goal of this project is to vectorize the entire set of blobfoxes.
 Automation is key for that, and a solution that can generate clean (both in terms of readability and visual accuracy) results with minimal tweaking will have to be built.
 
+If you enjoy this project, then come say hi here:
+
+- [subreddit dedicated to this project](https://reddit.com/blobfox)
+- matrix room (TODO)
+
 ## Installation and usage
 
 *TODO :)*
