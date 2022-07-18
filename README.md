@@ -3,6 +3,8 @@
 A repository containing the "blobfox" emotes, [originally made by Feuerfuchs](https://web.archive.org/web/20211115174913/https://www.feuerfuchs.dev/en/projects/blobfox-emojis/)
 and released under the Apache 2.0 license.
 <!-- TODO: find new link+email for feuerfuchs -->
+Work was initially made [on a public archive](https://git.lambdaurora.dev/lambdaurora/diverse_archive) to vectorized some of the blobfoxes,
+but as more variants were created, the project needed a new, dedicated place to reside.
 
 This repository also contains additional blobfoxes, blobcats and other blob animal characters, which are all made available under the Apache 2.0 license.
 
@@ -34,7 +36,7 @@ See [LICENSE.txt](LICENSE.txt) for more information.
 For simplicity, the authors of the different parts of this project have been grouped together under the "blobfox team", which contains but is not limited to:
 
 - Feuerfuchs: [original website (down as of writing)](https://feuerfuchs.dev/), [archive](https://web.archive.org/web/20211115174913/https://www.feuerfuchs.dev/en/projects/blobfox-emojis/)
-- [LambdAurora](https://git.lambdaurora.dev/lambdaurora/)
+- [LambdAurora](https://git.lambdaurora.dev/lambdaurora/), hosts [a mirror](https://git.lambdaurora.dev/lambdaurora/blobfox)
 - [Shad Amethyst](https://git.shadamethyst.xyz/adri326/)
 
 <!-- Add yourself here as you please :) -->
