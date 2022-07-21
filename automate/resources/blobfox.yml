@@ -1,4 +1,7 @@
-blobfox:
+name: 'blobfox'
+basedOff:
+  - null # all variants from 'blob' will be imported in this unit, unless they are already present
+variants:
   - name: 'base'
     src: '../vector/blobfox.svg'
 
@@ -8,7 +11,7 @@ blobfox:
       - type: svg
         src: 'resources/lgbtq_heart.svg'
 
-    overwrite:
+    overwrites:
       - id: 'eye-left'
         color: 0xfffffffff
         remove: true
