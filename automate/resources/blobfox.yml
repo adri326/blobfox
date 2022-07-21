@@ -1,12 +1,10 @@
 name: 'blobfox'
-basedOff:
-  - null # all variants from 'blob' will be imported in this unit, unless they are already present
+basedOff: null
 variants:
   - name: 'base'
     src: '../vector/blobfox.svg'
 
   - name: 'boop'
-    base: 'base'
     objects:
       - type: svg
         src: 'resources/lgbtq_heart.svg'

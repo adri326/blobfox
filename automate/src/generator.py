@@ -4,25 +4,21 @@ import yaml
 from cairosvg.surface import Surface
 
 
-from data.variantList import VariantList
+from data.variants import Variants
 
 
 class Generator:
-	declarations: dict[ str, VariantList ]
+	declarations: dict[ str, Variants ]
 	surfaces: dict[ str, Surface ]
 
 	def __init__( self, declFile: Path ) -> None:
 		if not declFile.exists():
 			raise FileNotFoundError('Declaration file does not exist!')
 
-		self.recursiveLoad( declFile )
+		self.declarations = { declFile.name[:-4]: self.load( declFile ) }
 
-	def recursiveLoad( self, declFile: Path ) -> None:
-		variants = VariantList( **yaml.load( declFile.read_text(), yaml.FullLoader ) )
-		self.declarations[ variants.name ] = variants
-
-		if variants.basedOff is not None:
-			self.recursiveLoad( declFile.parent / f'{variants.basedOff}.yml' )
+	def load( self, declFile: Path ) -> Variants:
+		return Variants( declFile, self )
 
 	def generate( self, outputDir: Path = Path('.') ) -> None:
 		"""
@@ -33,9 +29,8 @@ class Generator:
 		if not outputDir.exists():
 			outputDir.mkdir()
 
-		for variant in self.variants:
-			pass
+		print( self.declarations['neugeme'] )
 
 
 if __name__ == '__main__':
-	Generator( Path('./resources/blobfox.yml') ).generate( Path('./run') )
+	Generator( Path('./resources/neugeme.yml') ).generate( Path('./run') )

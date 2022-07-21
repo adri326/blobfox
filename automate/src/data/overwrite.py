@@ -5,7 +5,7 @@ from typing_extensions import Self
 @dataclass(frozen=True)
 class Overwrite:
 	id: str
-	color: str | None
+	color: str | None = None
 	remove: bool = False
 
 	@classmethod

@@ -6,10 +6,10 @@ from data.object import Object
 from data.overwrite import Overwrite
 
 
-@dataclass(frozen=True)
+@dataclass
 class Emote:
 	name: str
-	origin: str
+	origin: list[ str ]  #: the origins in order of definition
 	base: str | None = None
 	src: Path | None = None
 	objects: list[Object] = None
@@ -19,7 +19,7 @@ class Emote:
 	def load( cls, data: list[dict], origin: str ) -> list[Self]:
 		return [
 			Emote(
-				origin=origin,
+				origin=[ origin ],
 				**entry | {
 					'overwrites': Overwrite.load( entry.get( 'overwrites', [ ] ) ),
 					'objects': Object.load( entry.get( 'objects', [ ] ) )
