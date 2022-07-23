@@ -21,6 +21,7 @@ class Emote:
 			Emote(
 				origin=[ origin ],
 				**entry | {
+					'base': 'base' if 'base' not in entry and 'src' not in entry else entry.get( 'base', None ),
 					'overwrites': Overwrite.load( entry.get( 'overwrites', [ ] ) ),
 					'objects': Object.load( entry.get( 'objects', [ ] ) )
 				}

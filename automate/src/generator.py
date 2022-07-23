@@ -1,9 +1,9 @@
 from pathlib import Path
 
-import yaml
+from PIL.Image import Image
 from cairosvg.surface import Surface
 
-
+from data.emote import Emote
 from data.variants import Variants
 
 
@@ -20,17 +20,21 @@ class Generator:
 	def load( self, declFile: Path ) -> Variants:
 		return Variants( declFile, self )
 
-	def generate( self, outputDir: Path = Path('.') ) -> None:
+	def generate( self, emote: Emote ) -> Image:
+		pass
+
+	def export( self, sets: list[str], outputDir: Path = Path( '.' ) ) -> None:
 		"""
 		Generates the images in the given folder
 		\t
+		:param sets: the sets to export to PNGs
 		:param outputDir: output directory
 		"""
 		if not outputDir.exists():
 			outputDir.mkdir()
 
-		print( self.declarations['neugeme'] )
+		for set in sets:
+			# for emote in emotes
+			pass
 
 
-if __name__ == '__main__':
-	Generator( Path('./resources/neugeme.yml') ).generate( Path('./run') )
