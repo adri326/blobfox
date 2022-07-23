@@ -48,9 +48,10 @@ Any contribution to the [original repository of this project](https://git.shadam
 
 This means that:
 - You must either be the author of the code/asset/image you wish to contribute, or have been given explicit permission by the original author to contribute it here.
-- Assets and images from websites like `slackmojis`, `blobs.gg`, `emojos.in` or `emoji.gg` are generally **not** welcome,
-  as these website either don't care about copyright ownership or have a questionable licensing record.
-- Contributions derived from assets and images from the above websites are likewise not welcome;
-  as a rule of thumb, asset contributions should only base themselves on what is present in this repository.
+- Assets and images must be released under the Apache 2.0 license
+- If a contribution is derived from an asset or image, then this asset must also be released under the Apache 2.0 license
+- Ideally, contributions should contain a list of contributors, so that these can be added to the list of contributors
 
-For svg files, please include the [svg-default-metadata.xml](./svg-default-metadata.xml) file in the svg file.
+For svg files, please include the [svg-default-metadata.xml](./svg-default-metadata.xml) file in the svg file (and complete the blank fields).
+
+Don't hesitate to open an issue if you are unsure about any of the above points!
