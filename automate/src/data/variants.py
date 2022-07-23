@@ -26,7 +26,7 @@ class Variants( Collection[Emote] ):
 		data = util.load( path )
 
 		object.__setattr__( self, 'name', data[ 'name' ] )
-		object.__setattr__( self, 'basedOff', tuple( data[ 'basedOff' ] or [ ] ) )
+		object.__setattr__( self, 'basedOff', data.get( 'basedOff', None ) )
 
 		if data['basedOff']:
 			# loading a set based off another, load the base one before this
