@@ -1,2 +1,4 @@
 original/
 output/
+__pycache__
+target

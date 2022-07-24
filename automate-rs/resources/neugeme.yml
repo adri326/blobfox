@@ -1,0 +1,11 @@
+name: 'neugeme'
+base: 'blobfox.yml' # all variants from 'blobfox' will be imported in this unit, unless they are already present
+variants:
+  'base':
+    overwrites:
+      - id: 'body'
+        fill: 0x02FFFD
+      - id: 'hair'
+        fill: 0x02FFFD
+      - id: 'blobfox'
+        remove: true

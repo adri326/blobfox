@@ -1,0 +1,15 @@
+name: 'blobfox'
+base_off: null
+variants:
+  'base':
+    src: '../vector/blobfox.svg'
+
+  'boop':
+    assets:
+      - type: svg
+        src: 'assets/lgbtq_heart.svg'
+
+    overwrites:
+      - id: 'eye-left'
+        fill: 0xffffffff
+        remove: true
