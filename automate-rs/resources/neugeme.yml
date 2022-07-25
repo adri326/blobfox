@@ -9,3 +9,6 @@ variants:
         fill: 0x02FFFD
       - id: 'blobfox'
         remove: true
+
+  'sleepy':
+    base: 'base'

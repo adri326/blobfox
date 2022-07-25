@@ -15,14 +15,15 @@ pub struct Variant {
 
     pub src: Option<PathBuf>, // Loads every asset from an SVG file
     #[serde(default)]
-    pub assets: Vec<Asset>, // Loads individual assets
+    pub assets: Vec<AssetDecl>, // Loads individual assets
 
     #[serde(default)]
     pub overwrites: Vec<Overwrite>, // Operations on assets
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct Asset {
+pub struct AssetDecl {
+    pub name: String,
     pub src: Option<PathBuf>,
 }
 
@@ -96,7 +97,7 @@ impl Variant {
     }
 }
 
-impl Asset {
+impl AssetDecl {
     /// Replaces every path relative to the yaml file to paths relative to the cwd
     pub fn canonicalize(&mut self, path: &Path) {
         match &mut self.src {

@@ -2,11 +2,12 @@ name: 'blobfox'
 base_off: null
 variants:
   'base':
-    src: '../vector/blobfox.svg'
+    src: '../../vector/blobfox.svg'
 
   'boop':
     assets:
       - type: svg
+        name: 'lgbtq_heart'
         src: 'assets/lgbtq_heart.svg'
 
     overwrites:
