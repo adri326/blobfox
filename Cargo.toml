@@ -1,0 +1,12 @@
+[package]
+name = "blobfox-template"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.140", features = ["derive"] }
+toml = "0.5.9"
+xmltree = "0.10.3"
+mustache = { git = "https://git.shadamethyst.xyz/adri326/rust-mustache.git" }
