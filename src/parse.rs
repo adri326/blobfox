@@ -1,4 +1,4 @@
-use xmltree::{XMLNode, Element};
+use xmltree::{Element};
 use serde::{Serialize, Deserialize};
 use std::path::{PathBuf, Path};
 use std::collections::HashMap;
@@ -27,6 +27,9 @@ impl From<toml::de::Error> for ParseError {
 pub struct SpeciesDecl {
     /// Imports xml and svg files from this folder if they aren't found
     pub base: Option<PathBuf>,
+
+    /// The name of the species
+    pub name: String,
 
     #[serde(skip)]
     pub templates: HashMap<String, PathBuf>,

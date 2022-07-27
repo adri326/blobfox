@@ -111,6 +111,10 @@ impl RenderingContext {
             None
         }
     }
+
+    pub fn species(&self) -> Arc<SpeciesDecl> {
+        Arc::clone(&self.species)
+    }
 }
 
 impl PartialLoader for RenderingContext {
@@ -133,11 +137,13 @@ pub fn query_selector(svg: Element, pattern: &str) -> Option<Element> {
 
     for child in svg.children {
         if let XMLNode::Element(child) = child {
-            if child.attributes.get("id").map(|id| id == pattern).unwrap_or(false) {
-                return Some(child);
-            } else if child.children.len() > 0 {
-                if let Some(res) = query_selector(child, pattern) {
-                    return Some(res);
+            if let ("#", pattern_id) = pattern.split_at(1) {
+                if child.attributes.get("id").map(|id| id == pattern_id).unwrap_or(false) {
+                    return Some(child);
+                } else if child.children.len() > 0 {
+                    if let Some(res) = query_selector(child, pattern) {
+                        return Some(res);
+                    }
                 }
             }
         }
@@ -152,7 +158,7 @@ pub fn xml_to_string(element: Element) -> Option<String> {
     config.perform_indent = true;
     config.write_document_declaration = false;
 
-    element.write_with_config(&mut s, config);
+    element.write_with_config(&mut s, config).ok()?;
 
     String::from_utf8(s).ok()
 }
