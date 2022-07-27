@@ -28,6 +28,22 @@ If you enjoy this project, then come say hi here:
 - `custom/` contains PNG versions of variants based on the above archive that haven't been vectorized yet
 - `vector/` contains vectorized versions of the blobfoxes (not necessary limited to the original blobfoxes)
 
+## How to help
+
+If you'd like to help, there are a few things that need attention outside of implementing features:
+
+- `TODO`s around the code (currently in the `feat/template` branch)
+- vectorize high-value emotes (emotes which contain assets not present in others);
+    the usual procedure is to copy the `blobfox.svg` file and to edit away, making sure not to move the body around
+- draw base emotes for other species:
+    - raccoon
+    - doberman
+    - german shepherd
+    - collie
+    - sheep
+    - etc.
+- clean up the SVG for the existing emotes (the `clean` binary in `feat/template` is meant to do the heavy-lifting)
+
 ## License
 
 All the code, images and assets of this repository are made available under the Apache 2.0 license.
