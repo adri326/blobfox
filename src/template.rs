@@ -34,6 +34,12 @@ impl RenderingContext {
         Context::with_loader(self.clone()).compile(template.chars())
     }
 
+    fn render_to_string(&self, string: &str) -> Result<String, mustache::Error> {
+        Context::with_loader(self.clone())
+            .compile(string.chars())?
+            .render_data_to_string(&self.get_data())
+    }
+
     pub fn get_data(&self) -> Data {
         let mut builder = MapBuilder::new();
 
@@ -74,6 +80,46 @@ impl RenderingContext {
                 String::new()
             });
         }
+
+        let this = self.clone();
+        builder = builder.insert_fn("set-fill", move |input| {
+            // Parse `color|xml`
+            if let [color, xml] = input.splitn(2, '|').collect::<Vec<_>>()[..] {
+                // Render `color` and `xml`
+                if let (Ok(color), Ok(xml)) = (this.render_to_string(&color), this.render_to_string(&xml)) {
+                    // Convert `xml` to XML
+                    match Element::parse(xml.as_bytes()) {
+                        Ok(mut xml) => {
+                            // Substitute the fill color
+                            if let Some(style) = xml.attributes.get("style") {
+                                xml.attributes.insert("style".to_string(), format!(
+                                    "{};fill: {};",
+                                    style,
+                                    color
+                                ));
+                            }
+                            if let Some(_fill) = xml.attributes.get("fill") {
+                                xml.attributes.insert("fill".to_string(), color);
+                            }
+
+                            // Render XML to string
+                            if let Some(res) = xml_to_string(xml) {
+                                res
+                            } else {
+                                String::from("<!-- Error in stringifying xml -->")
+                            }
+                        }
+                        Err(err) => {
+                            format!("<!-- Error in parsing xml: {} -->", err)
+                        }
+                    }
+                } else {
+                    String::from("<!-- Error in parsing color or element -->")
+                }
+            } else {
+                String::from("<!-- Invalid syntax: expected `color|xml` -->")
+            }
+        });
 
         builder.build()
     }

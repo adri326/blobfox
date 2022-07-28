@@ -68,9 +68,9 @@ pub struct Args {
     #[clap(value_parser)]
     names: Vec<String>,
 
-    /// Automatically resize the SVG's viewBox, defaults to true
-    #[clap(short, long, value_parser, default_value = "true")]
-    resize: bool,
+    /// Disable automatically resizing the SVG's viewBox, defaults to false
+    #[clap(short, long, value_parser, default_value = "false")]
+    no_resize: bool,
 
     /// Dimension to export the images as; can be specified multiple times
     #[clap(long, value_parser)]

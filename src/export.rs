@@ -50,14 +50,23 @@ impl From<png::EncodingError> for ExportError {
 
 pub fn get_new_bbox(svg: &Tree) -> Option<(f64, f64, f64, f64)> {
     let bbox = svg.root().calculate_bbox()?;
-    if bbox.width() > bbox.height() {
-        let y = bbox.y() - (bbox.width() - bbox.height()) / 2.0;
 
-        Some((bbox.x(), y, bbox.width(), bbox.width()))
+    // FIXME: remove once https://github.com/RazrFalcon/resvg/issues/528 is fixed
+    const MARGIN: f64 = 1.0;
+
+    let x = bbox.x() - MARGIN;
+    let y = bbox.y() - MARGIN;
+    let width = bbox.width() + MARGIN * 2.0;
+    let height = bbox.height() + MARGIN * 2.0;
+
+    if width > height {
+        let y = y - (width - height) / 2.0;
+
+        Some((x, y, width, width))
     } else {
-        let x = bbox.x() - (bbox.height() - bbox.width()) / 2.0;
+        let x = x - (height - width) / 2.0;
 
-        Some((x, bbox.y(), bbox.height(), bbox.height()))
+        Some((x, y, height, height))
     }
 }
 
@@ -98,7 +107,7 @@ pub fn export(
     output_name: String,
     args: &super::Args,
 ) -> Result<(), ExportError> {
-    if args.resize {
+    if !args.no_resize {
         svg_str = resize(svg_str)?;
     }
 

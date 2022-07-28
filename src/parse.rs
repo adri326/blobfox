@@ -59,15 +59,30 @@ pub fn load_species(path: impl AsRef<Path>) -> Result<SpeciesDecl, ParseError> {
 
     let mut res: SpeciesDecl = toml::from_str(&declaration)?;
 
+    if let Some(ref base) = &res.base {
+        let path = path.as_ref().to_path_buf().join(base);
+        let base = load_species(path)?;
+
+        res.templates = base.templates;
+        res.variants = base.variants;
+        res.assets = base.assets;
+    }
+
     // Read the `templates` directory and populate the `templates` field;
     // on error, ignore the directory.
-    res.templates = read_dir_xml(path.as_ref().join("templates"));
+    for (name, path) in read_dir_xml(path.as_ref().join("templates")) {
+        res.templates.insert(name, path);
+    }
 
     // Read the `variants` directory
-    res.variants = read_dir_xml(path.as_ref().join("variants"));
+    for (name, path) in read_dir_xml(path.as_ref().join("variants")) {
+        res.variants.insert(name, path);
+    }
 
     // Read the `assets` directory
-    res.assets = read_dir_xml(path.as_ref().join("assets"));
+    for (name, path) in read_dir_xml(path.as_ref().join("assets")) {
+        res.assets.insert(name, path);
+    }
 
     Ok(res)
 }
