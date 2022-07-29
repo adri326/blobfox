@@ -1,16 +1,3 @@
-{{! TODO: use parent }}
-<g id="hands">
-    {{#tags.hands-reach}}
-        {{#set-fill}}#fcc21b|{{#reach_aww}}#left-hand{{/reach_aww}}{{/set-fill}}
-        {{#set-fill}}#fcc21b|{{#reach_aww}}#right-hand{{/reach_aww}}{{/set-fill}}
-    {{/tags.hands-reach}}
-    {{#tags.hand-3c}}
-        {{#tags.holding}}
-            {{#set-fill}}#fcc21b|{{#knife}}#left-hand{{/knife}}{{/set-fill}}
-        {{/tags.holding}}
-        {{^tags.holding}}
-            {{! :3c hand }}
-            {{#set-fill}}#fcc21b|{{#3c_evil}}#left-hand{{/3c_evil}}{{/set-fill}}
-        {{/tags.holding}}
-    {{/tags.hand-3c}}
-</g>
+{{#set-fill}}
+    #fcc21b | {{>parent.hands}}
+{{/set-fill}}

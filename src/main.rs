@@ -1,4 +1,3 @@
-use std::sync::Arc;
 use clap::Parser;
 use std::path::PathBuf;
 
@@ -14,7 +13,7 @@ use export::*;
 fn main() {
     let args = Args::parse();
 
-    let species = Arc::new(load_species(args.decl.clone()).unwrap());
+    let species = load_species(args.decl.clone()).unwrap();
     let context = RenderingContext::new(species);
 
     let output_dir = args.output_dir.clone().unwrap_or(PathBuf::from("output/"));

@@ -12,14 +12,21 @@ pub struct RenderingContext {
     rendered_variants: Arc<Mutex<HashMap<String, Element>>>,
 
     loaded_assets: Arc<Mutex<HashMap<String, Element>>>,
+
+    parent: Option<Box<RenderingContext>>,
 }
 
 impl RenderingContext {
-    pub fn new(species: Arc<SpeciesDecl>) -> Self {
+    pub fn new(mut species: SpeciesDecl) -> Self {
+        let parent = std::mem::take(&mut species.parent).map(|parent| {
+            Box::new(Self::new(*parent))
+        });
+
         Self {
-            species,
+            species: Arc::new(species),
             rendered_variants: Arc::new(Mutex::new(HashMap::new())),
             loaded_assets: Arc::new(Mutex::new(HashMap::new())),
+            parent
         }
     }
 
@@ -39,6 +46,10 @@ impl RenderingContext {
     }
 
     pub fn get_data(&self, variant_name: &str) -> Data {
+        self.get_builder(variant_name).build()
+    }
+
+    fn get_builder(&self, variant_name: &str) -> MapBuilder {
         let mut builder = MapBuilder::new();
 
         builder = builder.insert_map("variant", |mut builder| {
@@ -92,16 +103,7 @@ impl RenderingContext {
                     // Convert `xml` to XML
                     match Element::parse(xml.as_bytes()) {
                         Ok(mut xml) => {
-                            // Substitute the fill color
-                            if let Some(style) = xml.attributes.get("style") {
-                                xml.attributes.insert(
-                                    "style".to_string(),
-                                    format!("{};fill: {};", style, color),
-                                );
-                            }
-                            if let Some(_fill) = xml.attributes.get("fill") {
-                                xml.attributes.insert("fill".to_string(), color);
-                            }
+                            set_fill(&color.trim(), &mut xml);
 
                             // Render XML to string
                             if let Some(res) = xml_to_string(xml) {
@@ -122,6 +124,16 @@ impl RenderingContext {
             }
         });
 
+        if let Some(ref parent) = self.parent {
+            let parent = parent.clone();
+            let variant_name = variant_name.to_string();
+            builder = builder.insert_map("parent", move |_| {
+                parent.get_builder(&variant_name)
+            });
+        }
+
+        // TODO: memoize the builder to this stage
+
         // Variant tags
         if let Some(tags) = self.species.variants.get(variant_name) {
             builder = builder.insert_map("tags", move |mut builder| {
@@ -133,7 +145,7 @@ impl RenderingContext {
             });
         }
 
-        builder.build()
+        builder
     }
 
     pub fn get_variant(&self, name: &String) -> Option<Element> {
@@ -185,11 +197,36 @@ impl PartialLoader for RenderingContext {
     fn load(&self, name: impl AsRef<Path>) -> Result<String, mustache::Error> {
         let name = name.as_ref().to_str().ok_or(mustache::Error::InvalidStr)?;
 
+        if let Some(ref parent) = self.parent {
+            if name.starts_with("parent.") {
+                return parent.load(&name[7..]);
+            }
+        }
+
         if let Some(path) = self.species.template_paths.get(name) {
             Ok(std::fs::read_to_string(path)?)
         } else {
             eprintln!("No template named {}", name);
             Err(mustache::Error::NoFilename)
+        }
+    }
+}
+
+fn set_fill(color: &str, xml: &mut Element) {
+    // Substitute the fill color
+    if let Some(style) = xml.attributes.get("style") {
+        xml.attributes.insert(
+            "style".to_string(),
+            format!("{};fill: {};", style, color),
+        );
+    }
+    if let Some(_fill) = xml.attributes.get("fill") {
+        xml.attributes.insert("fill".to_string(), color.to_string());
+    }
+
+    for child in xml.children.iter_mut() {
+        if let XMLNode::Element(ref mut child) = child {
+            set_fill(color, child);
         }
     }
 }

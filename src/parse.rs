@@ -42,6 +42,9 @@ pub struct SpeciesDecl {
 
     #[serde(skip)]
     pub asset_paths: HashMap<String, PathBuf>,
+
+    #[serde(skip)]
+    pub parent: Option<Box<SpeciesDecl>>,
 }
 
 /// Loads the given file as an XML tree
@@ -66,10 +69,11 @@ pub fn load_species(path: impl AsRef<Path>) -> Result<SpeciesDecl, ParseError> {
         let path = path.as_ref().to_path_buf().join(base);
         let base = load_species(path)?;
 
-        res.template_paths = base.template_paths;
-        res.variant_paths = base.variant_paths;
-        res.asset_paths = base.asset_paths;
-        res.variants = base.variants;
+        res.template_paths = base.template_paths.clone();
+        res.variant_paths = base.variant_paths.clone();
+        res.asset_paths = base.asset_paths.clone();
+        res.variants = base.variants.clone();
+        res.parent = Some(Box::new(base));
     }
 
     // Read the `templates` directory and populate the `template_paths` field;
