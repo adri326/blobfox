@@ -1,17 +1,21 @@
-<g id="base-snug">
+<g id="body-snug">
+    {{! TODO: owo ear }}
     {{#snug}}#left-ear{{/snug}}
     {{#snug}}#body{{/snug}}
     {{#snug}}#hair{{/snug}}
     {{#snug}}#right-ear{{/snug}}
     {{#snug}}#right-ear-fluff{{/snug}}
-    {{! TODO: update to the latest standard }}
-    <!--<g id="old">
-        {{#snug}}#left-ear{{/snug}}
-        {{#snug}}#right-ear{{/snug}}
-        {{#snug}}#right-ear-fluff{{/snug}}
-        {{#snug}}#body{{/snug}}
-    </g>-->
-    <!--<g id="new" transform="scale(1 0.88) translate(0 2)">
+
+    {{#tags.tail}}
+        <g id="tail">
+            {{#snug}}#tail{{/snug}}
+            {{#snug}}#tail-outline{{/snug}}
+        </g>
+    {{/tags.tail}}
+</g>
+
+<!-- Following is a list of transforms to approximate the snug version using the base version
+    <g id="new" transform="scale(1 0.88) translate(0 2)">
         <g id="left-ear" transform="rotate(5 6.6 5.5) translate(0 0.2) scale(1 1.2)">
             {{#base}}#left-ear{{/base}}
         </g>
@@ -21,5 +25,5 @@
             {{#base}}#right-ear{{/base}}
             {{#base}}#right-ear-fluff{{/base}}
         </g>
-    </g>-->
-</g>
+    </g>
+-->
