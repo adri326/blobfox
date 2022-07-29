@@ -31,14 +31,17 @@ pub struct SpeciesDecl {
     /// The name of the species
     pub name: String,
 
-    #[serde(skip)]
-    pub templates: HashMap<String, PathBuf>,
+    #[serde(default)]
+    pub variants: HashMap<String, Vec<String>>,
 
     #[serde(skip)]
-    pub variants: HashMap<String, PathBuf>,
+    pub template_paths: HashMap<String, PathBuf>,
 
     #[serde(skip)]
-    pub assets: HashMap<String, PathBuf>,
+    pub variant_paths: HashMap<String, PathBuf>,
+
+    #[serde(skip)]
+    pub asset_paths: HashMap<String, PathBuf>,
 }
 
 /// Loads the given file as an XML tree
@@ -63,25 +66,25 @@ pub fn load_species(path: impl AsRef<Path>) -> Result<SpeciesDecl, ParseError> {
         let path = path.as_ref().to_path_buf().join(base);
         let base = load_species(path)?;
 
-        res.templates = base.templates;
-        res.variants = base.variants;
-        res.assets = base.assets;
+        res.template_paths = base.template_paths;
+        res.variant_paths = base.variant_paths;
+        res.asset_paths = base.asset_paths;
     }
 
-    // Read the `templates` directory and populate the `templates` field;
+    // Read the `templates` directory and populate the `template_paths` field;
     // on error, ignore the directory.
     for (name, path) in read_dir_xml(path.as_ref().join("templates")) {
-        res.templates.insert(name, path);
+        res.template_paths.insert(name, path);
     }
 
     // Read the `variants` directory
     for (name, path) in read_dir_xml(path.as_ref().join("variants")) {
-        res.variants.insert(name, path);
+        res.variant_paths.insert(name, path);
     }
 
     // Read the `assets` directory
     for (name, path) in read_dir_xml(path.as_ref().join("assets")) {
-        res.assets.insert(name, path);
+        res.asset_paths.insert(name, path);
     }
 
     Ok(res)

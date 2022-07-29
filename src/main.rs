@@ -20,7 +20,7 @@ fn main() {
     let output_dir = args.output_dir.clone().unwrap_or(PathBuf::from("output/"));
 
     if args.names.is_empty() {
-        for name in context.species().variants.keys() {
+        for name in context.species().variant_paths.keys() {
             generate_variant(&context, name, &output_dir, &args);
         }
     } else {
@@ -31,9 +31,9 @@ fn main() {
 }
 
 fn generate_variant(context: &RenderingContext, name: &str, output_dir: &PathBuf, args: &Args) {
-    if let Some(path) = context.species().variants.get(name) {
+    if let Some(path) = context.species().variant_paths.get(name) {
         match context.compile(path).and_then(|template| {
-            template.render_data_to_string(&context.get_data())
+            template.render_data_to_string(&context.get_data(name))
         }) {
             Ok(svg) => {
                 match export(

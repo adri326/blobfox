@@ -1,15 +1,9 @@
-use mustache::{
-    Context,
-    PartialLoader,
-    Template,
-    MapBuilder,
-    Data,
-};
 use super::*;
+use mustache::{Context, Data, MapBuilder, PartialLoader, Template};
 use std::collections::HashMap;
 use std::path::Path;
 use std::sync::{Arc, Mutex};
-use xmltree::{XMLNode, Element};
+use xmltree::{Element, XMLNode};
 
 #[derive(Debug, Clone)]
 pub struct RenderingContext {
@@ -34,17 +28,21 @@ impl RenderingContext {
         Context::with_loader(self.clone()).compile(template.chars())
     }
 
-    fn render_to_string(&self, string: &str) -> Result<String, mustache::Error> {
+    fn render_to_string(
+        &self,
+        string: &str,
+        variant_name: &str,
+    ) -> Result<String, mustache::Error> {
         Context::with_loader(self.clone())
             .compile(string.chars())?
-            .render_data_to_string(&self.get_data())
+            .render_data_to_string(&self.get_data(variant_name))
     }
 
-    pub fn get_data(&self) -> Data {
+    pub fn get_data(&self, variant_name: &str) -> Data {
         let mut builder = MapBuilder::new();
 
         builder = builder.insert_map("variant", |mut builder| {
-            for variant_name in self.species.variants.keys() {
+            for variant_name in self.species.variant_paths.keys() {
                 let this = self.clone();
                 let variant_name = variant_name.to_string();
                 builder = builder.insert_fn(variant_name.clone(), move |selector| {
@@ -52,7 +50,7 @@ impl RenderingContext {
                     if let Some(svg) = svg {
                         if let Some(element) = query_selector(svg, &selector) {
                             if let Some(string) = xml_to_string(element) {
-                                return string
+                                return string;
                             }
                         }
                     }
@@ -63,7 +61,7 @@ impl RenderingContext {
             builder
         });
 
-        for asset_name in self.species.assets.keys() {
+        for asset_name in self.species.asset_paths.keys() {
             let this = self.clone();
             let asset_name = asset_name.to_string();
 
@@ -72,7 +70,7 @@ impl RenderingContext {
                 if let Some(svg) = svg {
                     if let Some(element) = query_selector(svg, &selector) {
                         if let Some(string) = xml_to_string(element) {
-                            return string
+                            return string;
                         }
                     }
                 }
@@ -82,21 +80,24 @@ impl RenderingContext {
         }
 
         let this = self.clone();
+        let variant_name_owned = variant_name.to_string();
         builder = builder.insert_fn("set-fill", move |input| {
             // Parse `color|xml`
             if let [color, xml] = input.splitn(2, '|').collect::<Vec<_>>()[..] {
                 // Render `color` and `xml`
-                if let (Ok(color), Ok(xml)) = (this.render_to_string(&color), this.render_to_string(&xml)) {
+                if let (Ok(color), Ok(xml)) = (
+                    this.render_to_string(&color, &variant_name_owned),
+                    this.render_to_string(&xml, &variant_name_owned),
+                ) {
                     // Convert `xml` to XML
                     match Element::parse(xml.as_bytes()) {
                         Ok(mut xml) => {
                             // Substitute the fill color
                             if let Some(style) = xml.attributes.get("style") {
-                                xml.attributes.insert("style".to_string(), format!(
-                                    "{};fill: {};",
-                                    style,
-                                    color
-                                ));
+                                xml.attributes.insert(
+                                    "style".to_string(),
+                                    format!("{};fill: {};", style, color),
+                                );
                             }
                             if let Some(_fill) = xml.attributes.get("fill") {
                                 xml.attributes.insert("fill".to_string(), color);
@@ -121,6 +122,17 @@ impl RenderingContext {
             }
         });
 
+        // Variant tags
+        if let Some(tags) = self.species.variants.get(variant_name) {
+            builder = builder.insert_map("tags", move |mut builder| {
+                for tag in tags.iter() {
+                    builder = builder.insert_bool(tag, true);
+                }
+
+                builder
+            });
+        }
+
         builder.build()
     }
 
@@ -128,14 +140,17 @@ impl RenderingContext {
         let rendered = self.rendered_variants.lock().unwrap().get(name).cloned();
         if let Some(rendered) = rendered {
             Some(rendered)
-        } else if let Some(path) = self.species.variants.get(name) {
+        } else if let Some(path) = self.species.variant_paths.get(name) {
             // TODO: log error
             let template = self.compile(path).ok()?;
-            let data = self.get_data();
+            let data = self.get_data(name);
             let rendered = template.render_data_to_string(&data).ok()?;
 
             let parsed = Element::parse(rendered.as_bytes()).ok()?;
-            self.rendered_variants.lock().unwrap().insert(name.clone(), parsed.clone());
+            self.rendered_variants
+                .lock()
+                .unwrap()
+                .insert(name.clone(), parsed.clone());
 
             Some(parsed)
         } else {
@@ -147,10 +162,13 @@ impl RenderingContext {
         let loaded = self.loaded_assets.lock().unwrap().get(name).cloned();
         if let Some(loaded) = loaded {
             Some(loaded)
-        } else if let Some(path) = self.species.assets.get(name) {
+        } else if let Some(path) = self.species.asset_paths.get(name) {
             let string = std::fs::read_to_string(path).ok()?;
             let parsed = Element::parse(string.as_bytes()).ok()?;
-            self.loaded_assets.lock().unwrap().insert(name.clone(), parsed.clone());
+            self.loaded_assets
+                .lock()
+                .unwrap()
+                .insert(name.clone(), parsed.clone());
 
             Some(parsed)
         } else {
@@ -167,7 +185,7 @@ impl PartialLoader for RenderingContext {
     fn load(&self, name: impl AsRef<Path>) -> Result<String, mustache::Error> {
         let name = name.as_ref().to_str().ok_or(mustache::Error::InvalidStr)?;
 
-        if let Some(path) = self.species.templates.get(name) {
+        if let Some(path) = self.species.template_paths.get(name) {
             Ok(std::fs::read_to_string(path)?)
         } else {
             eprintln!("No template named {}", name);
@@ -184,7 +202,12 @@ pub fn query_selector(svg: Element, pattern: &str) -> Option<Element> {
     for child in svg.children {
         if let XMLNode::Element(child) = child {
             if let ("#", pattern_id) = pattern.split_at(1) {
-                if child.attributes.get("id").map(|id| id == pattern_id).unwrap_or(false) {
+                if child
+                    .attributes
+                    .get("id")
+                    .map(|id| id == pattern_id)
+                    .unwrap_or(false)
+                {
                     return Some(child);
                 } else if child.children.len() > 0 {
                     if let Some(res) = query_selector(child, pattern) {
