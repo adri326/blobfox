@@ -69,6 +69,7 @@ pub fn load_species(path: impl AsRef<Path>) -> Result<SpeciesDecl, ParseError> {
         res.template_paths = base.template_paths;
         res.variant_paths = base.variant_paths;
         res.asset_paths = base.asset_paths;
+        res.variants = base.variants;
     }
 
     // Read the `templates` directory and populate the `template_paths` field;

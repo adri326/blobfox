@@ -1,1 +1,13 @@
-<g id="nose" />
+{{#tags.body-snug}}
+    <g id="nose-snug" transform="translate(1.5 0)">
+        {{#snug}}#nose{{/snug}}
+    </g>
+{{/tags.body-snug}}
+
+{{^tags.body-snug}}
+{{#tags.boop}}
+    <g id="nose-snug" transform="translate(1.5 -0.5)">
+        {{#snug}}#nose{{/snug}}
+    </g>
+{{/tags.boop}}
+{{/tags.body-snug}}
