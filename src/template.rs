@@ -46,10 +46,10 @@ impl RenderingContext {
     }
 
     pub fn get_data(&self, variant_name: &str) -> Data {
-        self.get_builder(variant_name).build()
+        self.get_builder(variant_name, true).build()
     }
 
-    fn get_builder(&self, variant_name: &str) -> MapBuilder {
+    fn get_builder(&self, variant_name: &str, include_parent: bool) -> MapBuilder {
         let mut builder = MapBuilder::new();
 
         builder = builder.insert_map("variant", |mut builder| {
@@ -124,12 +124,20 @@ impl RenderingContext {
             }
         });
 
-        if let Some(ref parent) = self.parent {
-            let parent = parent.clone();
-            let variant_name = variant_name.to_string();
-            builder = builder.insert_map("parent", move |_| {
-                parent.get_builder(&variant_name)
-            });
+        if include_parent {
+            let mut this = self.clone();
+
+            loop {
+                builder = builder.insert_map(&this.species.name, |_| {
+                    this.get_builder(variant_name, false)
+                });
+
+                if let Some(ref parent) = this.parent {
+                    this = *parent.clone();
+                } else {
+                    break
+                }
+            }
         }
 
         // TODO: memoize the builder to this stage
@@ -197,16 +205,30 @@ impl PartialLoader for RenderingContext {
     fn load(&self, name: impl AsRef<Path>) -> Result<String, mustache::Error> {
         let name = name.as_ref().to_str().ok_or(mustache::Error::InvalidStr)?;
 
-        if let Some(ref parent) = self.parent {
-            if name.starts_with("parent.") {
-                return parent.load(&name[7..]);
-            }
-        }
+        let components = name.split('.').collect::<Vec<_>>();
 
-        if let Some(path) = self.species.template_paths.get(name) {
-            Ok(std::fs::read_to_string(path)?)
+        if components.len() == 1 {
+            if let Some(path) = self.species.template_paths.get(name) {
+                Ok(std::fs::read_to_string(path)?)
+            } else {
+                eprintln!("No template named {}", name);
+                Err(mustache::Error::NoFilename)
+            }
+        } else if components.len() == 2 {
+            if components[0] == self.species.name {
+                self.load(components[1])
+            } else if let Some(ref parent) = self.parent {
+                parent.load(name)
+            } else {
+                eprintln!(
+                    "Cannot get template named {}: no species called {} in the inheritance tree",
+                    name,
+                    components[0]
+                );
+                Err(mustache::Error::NoFilename)
+            }
         } else {
-            eprintln!("No template named {}", name);
+            eprintln!("Cannot get template named {}: expected `name` or `species.name`", name);
             Err(mustache::Error::NoFilename)
         }
     }
