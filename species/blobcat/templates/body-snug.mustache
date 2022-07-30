@@ -3,7 +3,10 @@
         {{#base}}#left-ear{{/base}}
     </g>
 
-    {{#set-fill}}#fcc21b|{{#snug}}#body{{/snug}}{{/set-fill}}
+    {{#set-fill}}
+        {{vars.body_color}}
+        | {{#snug}}#body{{/snug}}
+    {{/set-fill}}
 
     <g id="right-ear" transform="scale(1 0.95) translate(0 2) rotate(5 29 5) translate(-0.5 1.6)">
         {{#base}}#right-ear{{/base}}

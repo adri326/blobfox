@@ -1,2 +1,9 @@
 name = "blobcat"
 base = "../blobfox/"
+
+[vars]
+body_color = "#fcc21b"
+ear_color = "#e9ae20"
+ear_fluff_color = "#8a6135"
+hand_color = "#fcc21b"
+tail_color = "#fcc21b"

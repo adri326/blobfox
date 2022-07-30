@@ -34,6 +34,9 @@ pub struct SpeciesDecl {
     #[serde(default)]
     pub variants: HashMap<String, Vec<String>>,
 
+    #[serde(default)]
+    pub vars: HashMap<String, String>,
+
     #[serde(skip)]
     pub template_paths: HashMap<String, PathBuf>,
 
@@ -73,6 +76,11 @@ pub fn load_species(path: impl AsRef<Path>) -> Result<SpeciesDecl, ParseError> {
         res.variant_paths = base.variant_paths.clone();
         res.asset_paths = base.asset_paths.clone();
         res.variants = base.variants.clone();
+        for (key, value) in base.vars.iter() {
+            if !res.vars.contains_key(key) {
+                res.vars.insert(key.clone(), value.clone());
+            }
+        }
         res.parent = Some(Box::new(base));
     }
 

@@ -124,6 +124,8 @@ impl RenderingContext {
             }
         });
 
+        builder = builder.insert("vars", &self.species.vars).unwrap();
+
         if include_parent {
             let mut this = self.clone();
 

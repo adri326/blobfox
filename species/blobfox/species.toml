@@ -1,6 +1,13 @@
 # Add options in here as needs be
 name = "blobfox"
 
+[vars]
+body_color = "#ff8702"
+ear_color = "#313131"
+ear_fluff_color = "#3bdccc"
+hand_color = "#ff8702"
+tail_color = "#ff8702"
+
 [variants]
 base = ["body-basic", "eyes-basic", "mouth-w"]
 happy = ["body-basic", "eyes-happy", "mouth-w"]
