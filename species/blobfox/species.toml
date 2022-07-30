@@ -33,3 +33,6 @@ snug_boop_owo = ["body-snug", "ear-owo", "eyes-owo", "tail", "boop"]
 stabby = ["body-basic", "holding", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
 
 blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]
+
+heart = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
+egg = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding"]

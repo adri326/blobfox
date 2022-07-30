@@ -12,4 +12,15 @@
             {{#3c_evil}}#left-hand{{/3c_evil}}
         {{/tags.holding}}
     {{/tags.hand-3c}}
+    {{^tags.hand-3c}}
+        {{#tags.holding}}
+            {{#tags.left-hand}}
+                {{#heart}}#left-hand{{/heart}}
+            {{/tags.left-hand}}
+
+            {{#tags.right-hand}}
+                {{#heart}}#right-hand{{/heart}}
+            {{/tags.right-hand}}
+        {{/tags.holding}}
+    {{/tags.hand-3c}}
 </g>
