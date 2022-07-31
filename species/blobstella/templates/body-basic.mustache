@@ -12,7 +12,13 @@
 
 {{! Right ear }}
 {{#set-fill}} {{vars.ear_color}} | {{#base}}#right-ear{{/base}} {{/set-fill}}
-{{#set-fill}} {{vars.ear_fluff_color}} | {{#base}}#right-ear-fluff{{/base}} {{/set-fill}}
+{{#set-fill}} {{vars.ear_fluff_color}} | {{#base}}#right-ear-full{{/base}} {{/set-fill}}
+
+{{! Marks }}
+<g clip-path="url(#body-clip)">
+    {{#base}}#left-marks{{/base}}
+    {{#base}}#right-marks{{/base}}
+</g>
 
 {{! Whiskers }}
 {{^tags.hands-reach}}

@@ -1,15 +1,22 @@
 <g id="body-snug">
+    <defs>
+        <clipPath id="body-clip">
+            {{#snug}}#body{{/snug}}
+        </clipPath>
+    </defs>
+
     {{! TODO: owo ear }}
-    {{#snug}}#left-ear{{/snug}}
-    {{#snug}}#body{{/snug}}
-    {{#snug}}#hair{{/snug}}
-    {{#snug}}#right-ear{{/snug}}
-    {{#snug}}#right-ear-fluff{{/snug}}
+    {{#set-fill}} {{vars.ear_color}} | {{#snug}}#left-ear{{/snug}} {{/set-fill}}
+
+    {{#set-fill}} {{vars.body_color}} | {{#snug}}#body{{/snug}} {{/set-fill}}
+    {{#set-fill}} {{vars.body_color}} | {{#snug}}#hair{{/snug}} {{/set-fill}}
+
+    {{#set-fill}} {{vars.ear_color}} | {{#snug}}#right-ear{{/snug}} {{/set-fill}}
+    {{#set-fill}} {{vars.ear_fluff_color}} | {{#snug}}#right-ear-fluff{{/snug}} {{/set-fill}}
 
     {{#tags.tail}}
         <g id="tail">
-            {{#snug}}#tail{{/snug}}
-            {{#snug}}#tail-outline{{/snug}}
+            {{#set-fill}} {{vars.body_color}} | {{#snug}}#tail{{/snug}} {{/set-fill}}
         </g>
     {{/tags.tail}}
 </g>

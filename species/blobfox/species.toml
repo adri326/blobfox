@@ -4,7 +4,7 @@ name = "blobfox"
 [vars]
 body_color = "#ff8702"
 ear_color = "#313131"
-ear_fluff_color = "#3bdccc"
+ear_fluff_color = "#ebdccc"
 hand_color = "#ff8702"
 tail_color = "#ff8702"
 

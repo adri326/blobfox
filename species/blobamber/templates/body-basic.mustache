@@ -1,15 +1,3 @@
-{{! Left ear }}
-{{#base}}#left-ear{{/base}}
+{{>blobcat.body-basic}}
 
-{{#base}}#body{{/base}}
-{{#base}}#belly{{/base}}
-{{#base}}#hair{{/base}}
-
-{{! Right ear }}
-{{#base}}#right-ear{{/base}}
-{{#base}}#right-ear-fluff{{/base}}
-
-{{! Whiskers }}
-{{^tags.hands-reach}}
-    {{>whiskers}}
-{{/tags.hands-reach}}
+{{#set-fill}} {{vars.marks_color}} | {{#base}}#belly{{/base}} {{/set-fill}}

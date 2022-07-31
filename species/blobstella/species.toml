@@ -1,0 +1,10 @@
+name = "blobstella"
+base = "../blobcat/"
+
+[vars]
+body_color = "#54b6e7"
+ear_color = "#3398c7"
+ear_fluff_color = "#224f66"
+hand_color = "#54b6e7"
+tail_color = "#54b6e7"
+marks_color = "#eee64e"

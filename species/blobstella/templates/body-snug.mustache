@@ -1,0 +1,14 @@
+{{>blobcat.body-snug}}
+
+<g clip-path="url(#body-clip)">
+    <g transform="scale(1 0.88) translate(0 4)">
+        {{#set-fill}}
+            {{vars.marks_color}}
+            | {{#base}}#left-marks{{/base}}
+        {{/set-fill}}
+        {{#set-fill}}
+            {{vars.marks_color}}
+            | {{#base}}#right-marks{{/base}}
+        {{/set-fill}}
+    </g>
+</g>
