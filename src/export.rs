@@ -3,7 +3,7 @@ use usvg::{
     NodeExt,
     Options,
 };
-use xmltree::{Element};
+use xmltree::{XMLNode, Element};
 use std::path::{PathBuf};
 use std::collections::HashSet;
 
@@ -48,7 +48,7 @@ impl From<png::EncodingError> for ExportError {
     }
 }
 
-pub fn get_new_bbox(svg: &Tree) -> Option<(f64, f64, f64, f64)> {
+fn get_new_bbox(svg: &Tree) -> Option<(f64, f64, f64, f64)> {
     let bbox = svg.root().calculate_bbox()?;
 
     // FIXME: remove once https://github.com/RazrFalcon/resvg/issues/528 is fixed
@@ -101,6 +101,45 @@ pub fn resize(svg_str: String) -> Result<String, ExportError> {
     }
 }
 
+/// Finds all the `<defs>` in the svg and combines them all into one
+pub fn combine_defs(svg_str: String) -> Result<String, ExportError> {
+    let mut svg_xml = get_xml(&svg_str)?;
+
+    let mut defs = Vec::new();
+
+    fn collect_defs(element: &mut Element, defs: &mut Vec<Element>) {
+        for child in std::mem::take(&mut element.children) {
+            match child {
+                XMLNode::Element(child) if child.name == "defs" => {
+                    defs.push(child);
+                }
+                mut child => {
+                    if let XMLNode::Element(ref mut child) = &mut child {
+                        collect_defs(child, defs);
+                    }
+                    element.children.push(child);
+                }
+            }
+        }
+    }
+
+    collect_defs(&mut svg_xml, &mut defs);
+
+    let mut defs_element = Element::new("defs");
+    defs_element.children = defs
+        .into_iter()
+        .map(|def| {
+            def.children.into_iter().filter(|child| matches!(child, XMLNode::Element(_)))
+        })
+        .flatten()
+        .collect::<Vec<_>>();
+    defs_element.attributes.insert("id".to_string(), "defs".to_string());
+
+    svg_xml.children.insert(0, XMLNode::Element(defs_element));
+
+    xml_to_str(&svg_xml)
+}
+
 pub fn export(
     mut svg_str: String,
     output_dir: &PathBuf,
@@ -110,6 +149,8 @@ pub fn export(
     if !args.no_resize {
         svg_str = resize(svg_str)?;
     }
+
+    svg_str = combine_defs(svg_str)?;
 
     mkdirp::mkdirp(output_dir.join("vector")).unwrap();
 
