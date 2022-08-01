@@ -9,7 +9,10 @@ default-run = "blobfox-template"
 [dependencies]
 serde = { version = "1.0.140", features = ["derive"] }
 toml = "0.5.9"
-xmltree = "0.10.3"
+# Original repo is abandonned :(
+# TODO: switch back to the official crate once https://github.com/eminence/xmltree-rs/pull/33 is merged
+# xmltree = "0.10.3"
+xmltree = { git = "https://github.com/MFEK/xmltree.rlib" }
 mustache = { git = "https://git.shadamethyst.xyz/adri326/rust-mustache.git" }
 clap = { version = "3.2", features = ["derive"] }
 mkdirp = "1.0.0"
