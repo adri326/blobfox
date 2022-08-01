@@ -1,25 +1,25 @@
 <g id="hands">
     {{#tags.hands-reach}}
-        {{#reach_aww}}#left-hand{{/reach_aww}}
-        {{#reach_aww}}#right-hand{{/reach_aww}}
+        {{#set-fill}} {{vars.hand_color}} | {{#reach_aww}}#left-hand{{/reach_aww}} {{/set-fill}}
+        {{#set-fill}} {{vars.hand_color}} | {{#reach_aww}}#right-hand{{/reach_aww}} {{/set-fill}}
     {{/tags.hands-reach}}
     {{#tags.hand-3c}}
         {{#tags.holding}}
-            {{#knife}}#left-hand{{/knife}}
+            {{#set-fill}} {{vars.hand_color}} | {{#knife}}#left-hand{{/knife}} {{/set-fill}}
         {{/tags.holding}}
         {{^tags.holding}}
             {{! :3c hand }}
-            {{#3c_evil}}#left-hand{{/3c_evil}}
+            {{#set-fill}} {{vars.hand_color}} | {{#3c_evil}}#left-hand{{/3c_evil}} {{/set-fill}}
         {{/tags.holding}}
     {{/tags.hand-3c}}
     {{^tags.hand-3c}}
         {{#tags.holding}}
             {{#tags.left-hand}}
-                {{#heart}}#left-hand{{/heart}}
+                {{#set-fill}} {{vars.hand_color}} | {{#heart}}#left-hand{{/heart}} {{/set-fill}}
             {{/tags.left-hand}}
 
             {{#tags.right-hand}}
-                {{#heart}}#right-hand{{/heart}}
+                {{#set-fill}} {{vars.hand_color}} | {{#heart}}#right-hand{{/heart}} {{/set-fill}}
             {{/tags.right-hand}}
         {{/tags.holding}}
     {{/tags.hand-3c}}
