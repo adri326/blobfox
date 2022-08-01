@@ -3,6 +3,7 @@ use clap::Parser;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
+/// Replaces meaningless `id`s given by inkscape with the `inkscape:label` of the elements
 fn main() {
     let args = Args::parse();
 
