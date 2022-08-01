@@ -1,0 +1,21 @@
+{{! Left ear }}
+{{#tags.ear-owo}}
+    {{#set-fill}} {{vars.ear_color}} | {{#boop_owo}}#left-ear{{/boop_owo}} {{/set-fill}}
+    {{#set-fill}} {{vars.ear_fluff_color}} | {{#boop_owo}}#left-ear-fluff{{/boop_owo}} {{/set-fill}}
+{{/tags.ear-owo}}
+{{^tags.ear-owo}}
+    {{#set-fill}} {{vars.ear_color}} | {{#base}}#left-ear{{/base}} {{/set-fill}}
+{{/tags.ear-owo}}
+
+{{! Body }}
+<defs>
+    <clipPath id="body-clip">
+        {{#base}}#body{{/base}}
+    </clipPath>
+</defs>
+{{#set-fill}} {{vars.body_color}} | {{#base}}#body{{/base}} {{/set-fill}}
+{{#set-fill}} {{vars.body_color}} | {{#base}}#hair{{/base}} {{/set-fill}}
+
+{{! Right ear }}
+{{#set-fill}} {{vars.ear_color}} | {{#base}}#right-ear{{/base}} {{/set-fill}}
+{{#set-fill}} {{vars.ear_fluff_color}} | {{#base}}#right-ear-fluff{{/base}} {{/set-fill}}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="128" id="svg5" viewBox="0 0 33.866668 33.866668" width="128" space="preserve" docname="blobfox_snug.svg" version="1.2.1 (9c6d41e410, 2022-07-14)">
+  <title id="title30762">blobfox_snug</title>
+  <sodipodi:namedview bordercolor="#ffffff" pageopacity="0" cx="75.065724" cy="56.801069" window-width="1536" window-height="779" pageshadow="0" showgrid="false" window-x="0" showpageshadow="2" pagecheckerboard="1" current-layer="layer1" borderopacity="1" pagecolor="#505050" zoom="4.9823006" window-maximized="1" id="namedview7" units="px" document-units="mm" window-y="0" deskcolor="#505050">
+    <inkscape:grid type="xygrid" id="grid10"/>
+  </sodipodi:namedview>
+  <defs id="defs2"/>
+  <g style="display:none" groupmode="layer" label="ref" id="ref">
+    <image width="33.866665" height="33.866665" preserveAspectRatio="none" style="display:inline;image-rendering:optimizeSpeed" href="../original/blobfoxsnug.png" id="blobfoxsnug" y="1.8622413" label="blobfoxsnug" x="-0.18173571"/>
+    <image width="33.866665" id="blobfox" height="33.866665" href="../original/blobfox.png" x="0" label="blobfox" preserveAspectRatio="none" y="0" style="display:none;image-rendering:optimizeSpeed"/>
+  </g>
+  <g style="display:inline" label="Base" groupmode="layer" id="Base">
+    <path style="display:inline;fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M 3.7029533,13.467291 C 2.5863313,7.5524483 2.720763,3.0692779 3.2206752,2.3811746 3.6145773,1.8389888 3.8796155,1.7059815 4.5256812,2.0638532 c 0.7626559,0.422454 2.238032,2.8036484 5.9217678,5.4360629 0.4563,0.4917473 1.034031,1.2278432 1.595721,1.9181887 C 8.2650414,10.346853 5.9703273,11.527396 3.7029533,13.467291 Z" label="left-ear" id="left-ear" nodetypes="cssccc"/>
+    <path style="display:inline;fill:#ff8702;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.4501" id="body" nodetypes="sssssss" label="body" d="M 10.099584,8.9965516 C 4.6053684,10.938385 -0.17569254,14.8323 -0.17511309,24.490132 c 2.4775e-4,4.129439 3.38857499,3.578067 8.14873859,5.544118 5.0472275,2.084612 10.2101235,0.693349 14.9812845,0.759756 6.514946,0.09068 10.689116,-2.808895 10.682885,-6.41181 -0.008,-4.620956 -0.519122,-6.400431 -2.473082,-10.141934 C 27.682494,7.5724015 16.017995,6.9047938 10.099584,8.9965516 Z"/>
+    <path nodetypes="ccccccccccccc" id="tail" label="tail" style="display:inline;fill:#ff8702;stroke:#313131;stroke-width:1.065;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" d="m 30.062455,23.608497 c -4.1685,1.232534 -6.103248,0.484784 -8.77819,-0.254015 0.247931,0.536398 0.570586,1.244647 0.783244,1.867794 -4.516592,-2.075881 -8.25138,-2.422087 -13.0014329,-1.4044 0.6553131,0.368286 1.5687259,0.684465 2.3489619,1.219448 -2.5438928,-0.157981 -6.4779203,-1.461628 -9.3604108,-1.779047 -0.9326016,3.593991 0.8514017,6.069509 3.5994121,7.548617 -1.1640757,0.344131 -2.3554289,0.582252 -3.6348427,0.92413 3.5741205,1.814817 9.6797824,1.215266 13.6470704,0.401936 -0.775137,0.837896 -1.744538,1.834893 -2.298883,2.36252 6.806202,-1.12007 9.228207,-1.438667 11.132863,-1.551518 -0.639822,0.553618 -1.435013,1.270638 -1.872076,1.750309 7.584677,0.646609 10.623986,-4.466206 10.406782,-9.263578"/>
+    <path label="hair" nodetypes="cccsssccc" d="m 11.060321,4.1744224 c 0.901685,1.7379658 1.170676,2.0093337 2.606336,3.7100465 C 11.320955,6.6477868 8.8530796,7.285934 7.8105447,7.7806063 9.8525879,8.1478604 10.146528,8.3135475 11.060321,8.6264779 14.099313,9.6671886 16.853191,10.830889 19.467538,9.3816658 20.746275,8.6728159 23.192646,7.1918197 22.007953,6.6159031 20.451596,5.8593089 19.394989,5.2247318 18.30614,4.7864828 18.405963,5.4537307 18.610398,5.963504 18.848788,6.7497157 16.899369,5.5219903 14.728467,4.5521393 11.060321,4.1744224 Z" id="hair" style="display:inline;fill:#ff8702;fill-opacity:1;stroke:none;stroke-width:0.253897px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.4501"/>
+    <path style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.272596px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.4501" d="m 32.324728,2.7631006 c -0.137219,-0.015245 -0.286986,-0.0205 -0.450392,-0.015178 -2.614467,0.085163 -8.122148,1.5696956 -12.932447,6.6703604 0.609559,0.4011754 1.300387,0.659259 1.99648,0.784017 0.253138,0.02924 0.516498,0.03841 0.791846,0.02621 0.352767,-0.01563 0.749008,-0.03058 1.16517,-0.05134 1.039082,-0.2337615 2.230071,-0.7181044 2.725675,-1.6345513 1.052175,-1.9456303 2.044756,-2.4177663 3.147881,-3.2546789 1.103129,-0.8369127 2.978584,-1.2426242 3.354996,-0.5011095 0.376411,0.7415145 -0.230747,2.845825 -0.767732,4.1855636 -1.196701,2.3778831 -3.688998,4.3490331 -3.167705,6.1630121 0.601919,2.094536 1.981215,1.618762 2.769958,-0.12056 C 32.337691,11.973385 33.289405,8.0422644 33.50621,6.2749066 33.61233,5.40988 34.383058,2.9917675 32.324755,2.7630882 Z" id="right-ear" label="right-ear" nodetypes="csccccssscssscc"/>
+    <path nodetypes="sccccccss" style="display:inline;fill:#ebdccc;fill-opacity:1;stroke:none;stroke-width:0.272596px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" label="right-ear-fluff" d="m 31.784879,3.9793462 c 2.27643,0.2739584 -0.207985,6.6460728 -1.61377,8.1006558 -1.405785,1.454585 -1.574305,2.44624 -1.982154,3.058769 -0.268093,-0.795207 -0.193681,-1.118402 -0.05847,-2.647634 -0.846238,0.27088 -2.308338,0.549724 -3.52852,0.122074 0.381761,-0.748264 0.883883,-1.874413 1.289246,-2.7789004 -0.533159,0.1427449 -1.71708,0.3007334 -3.115318,0.3471844 2.515991,-0.2709197 2.535046,-2.491578 3.793453,-3.5613457 1.823659,-1.5502862 3.889915,-2.8003356 5.215534,-2.6408031 z" id="right-ear-fluff"/>
+  </g>
+  <g style="display:inline" groupmode="layer" label="Features" id="Features">
+    <path style="fill:none;fill-opacity:1;stroke:#313131;stroke-width:1.02629;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" nodetypes="csc" label="nose-outline" d="M 8.9915496,20.917473 C 8.4755547,20.177748 8.4331421,19.012529 8.9604734,18.453048 9.4541629,17.929259 9.8419884,17.270203 11.527519,16.247272" id="nose-outline"/>
+    <path style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" nodetypes="ssss" d="m 10.765516,19.02758 c 0.955611,-0.521313 3.849322,-0.706251 4.516746,0.681514 0.106717,0.221894 -1.618122,1.890181 -2.674108,1.887838 -1.02104,-0.0023 -2.08232,-2.438598 -1.842638,-2.569352 z" label="nose" id="nose"/>
+    <path label="left-eye" d="m 8.1227622,13.079564 c -0.9901922,-0.02496 -1.712204,0.606988 -1.7396471,1.011188 -0.027443,0.4042 0.2087373,0.58611 0.8306647,0.577584 0.5872167,-0.008 2.2476948,-0.1258 3.8786662,1.68912 0.42702,0.475181 1.128793,0.03384 0.776806,-0.523146 -1.41087,-2.232561 -2.5536544,-2.724672 -3.7464898,-2.754746 z" nodetypes="ssssss" style="fill:#313131;fill-opacity:1;stroke-width:1.065;stroke-linecap:round" id="left-eye"/>
+    <path d="m 22.45886,14.479866 c 0.958633,0.24925 1.478226,1.0559 1.393065,1.451979 -0.08516,0.396077 -0.362368,0.505752 -0.957795,0.325937 -0.562209,-0.16973 -2.125708,-0.741163 -4.194178,0.553224 -0.541566,0.338896 -1.094303,-0.278962 -0.602284,-0.717192 1.972161,-1.756549 3.206372,-1.914203 4.361192,-1.613948 z" nodetypes="ssssss" label="right-eye" id="right-eye" style="display:inline;fill:#313131;fill-opacity:1;stroke-width:1.065;stroke-linecap:round"/>
+  </g>
+  <metadata id="metadata30760">
+    <rdf:RDF>
+      <cc:Work about="">
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Blobfox team (https://git.shadamethyst.xyz/adri326/blobfox), licensed under the Apache 2.0 License</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:title>blobfox_snug</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Feuerfuchs</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>https://git.shadamethyst.xyz/adri326/blobfox</dc:source>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Shad Amethyst</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

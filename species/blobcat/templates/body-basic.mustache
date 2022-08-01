@@ -1,0 +1,20 @@
+{{! Left ear }}
+{{#set-fill}} {{vars.ear_color}} | {{#base}}#left-ear{{/base}} {{/set-fill}}
+
+{{! Body }}
+<defs>
+    <clipPath id="body-clip">
+        {{#base}}#body{{/base}}
+    </clipPath>
+</defs>
+{{#set-fill}} {{vars.body_color}} | {{#base}}#body{{/base}} {{/set-fill}}
+{{#set-fill}} {{vars.body_color}} | {{#base}}#hair{{/base}} {{/set-fill}}
+
+{{! Right ear }}
+{{#set-fill}} {{vars.ear_color}} | {{#base}}#right-ear{{/base}} {{/set-fill}}
+{{#set-fill}} {{vars.ear_fluff_color}} | {{#base}}#right-ear-fluff{{/base}} {{/set-fill}}
+
+{{! Whiskers }}
+{{^tags.hands-reach}}
+    {{>whiskers}}
+{{/tags.hands-reach}}

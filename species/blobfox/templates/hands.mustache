@@ -1,0 +1,26 @@
+<g id="hands">
+    {{#tags.hands-reach}}
+        {{#reach_aww}}#left-hand{{/reach_aww}}
+        {{#reach_aww}}#right-hand{{/reach_aww}}
+    {{/tags.hands-reach}}
+    {{#tags.hand-3c}}
+        {{#tags.holding}}
+            {{#knife}}#left-hand{{/knife}}
+        {{/tags.holding}}
+        {{^tags.holding}}
+            {{! :3c hand }}
+            {{#3c_evil}}#left-hand{{/3c_evil}}
+        {{/tags.holding}}
+    {{/tags.hand-3c}}
+    {{^tags.hand-3c}}
+        {{#tags.holding}}
+            {{#tags.left-hand}}
+                {{#heart}}#left-hand{{/heart}}
+            {{/tags.left-hand}}
+
+            {{#tags.right-hand}}
+                {{#heart}}#right-hand{{/heart}}
+            {{/tags.right-hand}}
+        {{/tags.holding}}
+    {{/tags.hand-3c}}
+</g>

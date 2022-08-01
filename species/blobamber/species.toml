@@ -1,0 +1,10 @@
+name = "blobamber"
+base = "../blobcat/"
+
+[vars]
+body_color = "#6a6862"
+ear_color = "#313131"
+ear_fluff_color = "#474747"
+hand_color = "#6a6862"
+tail_color = "#6a6862"
+marks_color = "#c8c8c8"

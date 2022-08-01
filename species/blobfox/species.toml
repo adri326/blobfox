@@ -1,0 +1,38 @@
+# Add options in here as needs be
+name = "blobfox"
+
+[vars]
+body_color = "#ff8702"
+ear_color = "#313131"
+ear_fluff_color = "#ebdccc"
+hand_color = "#ff8702"
+tail_color = "#ff8702"
+
+[variants]
+base = ["body-basic", "eyes-basic", "mouth-w"]
+happy = ["body-basic", "eyes-happy", "mouth-w"]
+evil = ["body-basic", "eyes-evil", "mouth-w"]
+owo = ["body-basic", "ear-owo", "eyes-owo", "mouth-w"]
+
+"3c" = ["body-basic", "eyes-basic", "mouth-w", "hand-3c", "left-hand"]
+"3c_evil" = ["body-basic", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
+
+boop = ["body-basic", "boop", "eyes-basic", "mouth-w"]
+boop_aww = ["body-basic", "boop", "eyes-aww", "mouth-w"]
+boop_owo = ["body-basic", "ear-owo", "boop", "eyes-owo", "mouth-w"]
+
+reach = ["body-basic", "eyes-basic", "mouth-w", "hands-reach", "left-hand", "right-hand"]
+reach_aww = ["body-basic", "eyes-aww", "mouth-w", "hands-reach", "left-hand", "right-hand"]
+reach_owo = ["body-basic", "ear-owo", "eyes-owo", "mouth-w", "hands-reach", "left-hand", "right-hand"]
+
+snug = ["body-snug", "eyes-happy", "tail"]
+snug_aww = ["body-snug", "eyes-aww", "tail"]
+snug_owo = ["body-snug", "ear-owo", "eyes-owo", "tail"]
+snug_boop_owo = ["body-snug", "ear-owo", "eyes-owo", "tail", "boop"]
+
+stabby = ["body-basic", "holding", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
+
+blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]
+
+heart = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
+egg = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding"]
