@@ -52,7 +52,7 @@ fn get_new_bbox(svg: &Tree) -> Option<(f64, f64, f64, f64)> {
     let bbox = svg.root().calculate_bbox()?;
 
     // FIXME: remove once https://github.com/RazrFalcon/resvg/issues/528 is fixed
-    const MARGIN: f64 = 1.0;
+    const MARGIN: f64 = 2.0;
 
     let x = bbox.x() - MARGIN;
     let y = bbox.y() - MARGIN;
