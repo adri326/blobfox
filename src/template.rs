@@ -237,12 +237,21 @@ impl PartialLoader for RenderingContext {
 }
 
 fn set_fill(color: &str, xml: &mut Element) {
-    // Substitute the fill color
-    if let Some(style) = xml.attributes.get("style") {
-        xml.attributes.insert(
-            "style".to_string(),
-            format!("{};fill: {};", style, color),
-        );
+    // Substitute the fill color; TODO: handle transparency for SVG 1.1
+    if let Some(style) = xml.attributes.get_mut("style") {
+        let mut new_style = Vec::new();
+
+        for rule in style.split(';') {
+            if let [name, value] = rule.splitn(2, ':').collect::<Vec<_>>()[..] {
+                if name.trim() != "fill" && name.trim() != "fill-opacity" {
+                    new_style.push(format!("{}:{}", name, value));
+                }
+            }
+        }
+
+        new_style.push(format!("fill: {};", color));
+
+        *style = new_style.join(";");
     }
     if let Some(_fill) = xml.attributes.get("fill") {
         xml.attributes.insert("fill".to_string(), color.to_string());
@@ -257,7 +266,10 @@ fn set_fill(color: &str, xml: &mut Element) {
 
 pub fn query_selector(svg: Element, pattern: &str) -> Option<Element> {
     if pattern == "" {
-        return Some(svg);
+        // NOTE: it looks like having a nested svg makes resvg unhappy
+        let mut group = Element::new("g");
+        group.children = svg.children;
+        return Some(group);
     }
 
     for child in svg.children {

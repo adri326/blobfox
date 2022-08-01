@@ -16,8 +16,14 @@
 
 {{! Marks }}
 <g clip-path="url(#body-clip)">
-    {{#base}}#left-marks{{/base}}
-    {{#base}}#right-marks{{/base}}
+    {{#set-fill}}
+        {{vars.marks_color}}
+        | {{#base}}#left-marks{{/base}}
+    {{/set-fill}}
+    {{#set-fill}}
+        {{vars.marks_color}}
+        | {{#base}}#right-marks{{/base}}
+    {{/set-fill}}
 </g>
 
 {{! Whiskers }}

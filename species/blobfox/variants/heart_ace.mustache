@@ -1,0 +1,21 @@
+{{>header}}
+    {{>body}}
+
+    {{>eyes}}
+
+    <defs>
+        <clipPath id="clip-heart">
+            {{#heart}}#heart{{/heart}}
+        </clipPath>
+    </defs>
+
+    <g clip-path="url(#clip-heart)">
+        <g transform="rotate(9) scale(1.05 1.05) translate(10 45)">
+            {{#flag_ace}}{{/flag_ace}}
+        </g>
+    </g>
+
+    {{#set-fill}} rgba(255,255,255,0.5) | {{#heart}}#heart-reflection{{/heart}} {{/set-fill}}
+
+    {{>hands}}
+{{>footer}}

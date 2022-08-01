@@ -98,8 +98,13 @@ fn rescale(element: &mut Element, scale: f64) {
         if let Some(units) = element.attributes.get_mut("document-units") {
             *units = "px".to_string();
         }
-    } else if element.name == "ellipse" || element.name == "radialGradient" || element.name == "linearGradient" {
-        const PROPS: [&'static str; 11] = [
+    } else if
+        element.name == "ellipse"
+        || element.name == "radialGradient"
+        || element.name == "linearGradient"
+        || element.name == "rect"
+    {
+        const PROPS: [&'static str; 15] = [
             "cx",
             "cy",
             "rx",
@@ -110,7 +115,11 @@ fn rescale(element: &mut Element, scale: f64) {
             "x1",
             "x2",
             "y1",
-            "y2"
+            "y2",
+            "x",
+            "y",
+            "width",
+            "height",
         ];
 
         for prop in PROPS {
@@ -119,6 +128,21 @@ fn rescale(element: &mut Element, scale: f64) {
                     *attr = (parsed * scale).to_string();
                 }
             }
+        }
+    } else if element.name == "polygon" {
+        if let Some(points) = element.attributes.get_mut("points") {
+            let new_points = points.split_whitespace().map(|pair| {
+                let parsed = pair.split(',').map(|x| x.parse::<f64>()).collect::<Vec<_>>();
+                if let [Ok(x), Ok(y)] = parsed[..] {
+                    format!("{},{}", x * scale, y * scale)
+                } else if let [Ok(z)] = parsed[..] {
+                    format!("{}", z * scale)
+                } else {
+                    pair.to_string()
+                }
+            }).collect::<Vec<_>>().join(" ");
+
+            *points = new_points;
         }
     }
 
