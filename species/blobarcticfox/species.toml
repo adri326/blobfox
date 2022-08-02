@@ -1,0 +1,11 @@
+name = "blobarcticfox"
+base = "../blobfox"
+
+[vars]
+body_color = "#eef2f4"
+ear_color = "#8599ad"
+ear_fluff_color = "#a0c7de"
+hand_color = "#eef2f4"
+tail_color = "#eef2f4"
+marks_color = "#eee64e"
+sheen_color = "#bfdef4"

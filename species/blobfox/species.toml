@@ -29,6 +29,7 @@ snug = ["body-snug", "eyes-happy", "tail"]
 snug_aww = ["body-snug", "eyes-aww", "tail"]
 snug_owo = ["body-snug", "ear-owo", "eyes-owo", "tail"]
 snug_boop_owo = ["body-snug", "ear-owo", "eyes-owo", "tail", "boop"]
+snug_sleep = ["body-snug", "eyes-happy", "tail", "zzz"]
 
 comfy = ["body-comfy", "eyes-basic", "mouth-w"]
 comfy_blush = ["body-comfy", "eyes-closed", "blush", "mouth-hmpf"]
