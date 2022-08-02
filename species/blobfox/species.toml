@@ -30,6 +30,13 @@ snug_aww = ["body-snug", "eyes-aww", "tail"]
 snug_owo = ["body-snug", "ear-owo", "eyes-owo", "tail"]
 snug_boop_owo = ["body-snug", "ear-owo", "eyes-owo", "tail", "boop"]
 
+comfy = ["body-comfy", "eyes-basic", "mouth-w"]
+comfy_blush = ["body-comfy", "eyes-closed", "blush", "mouth-hmpf"]
+comfy_evil = ["body-comfy", "eyes-evil", "mouth-w"]
+comfy_happy = ["body-comfy", "eyes-happy", "mouth-w"]
+comfy_aww = ["body-comfy", "eyes-aww", "mouth-w"]
+comfy_boop = ["body-comfy", "boop", "eyes-basic", "mouth-w"]
+
 stabby = ["body-basic", "holding", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
 
 blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]

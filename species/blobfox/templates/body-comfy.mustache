@@ -1,0 +1,18 @@
+{{! Left ear }}
+{{#set-fill}} {{vars.ear_color}} | {{#comfy}}#left-ear{{/comfy}} {{/set-fill}}
+
+{{! Body }}
+<defs>
+    <clipPath id="body-clip">
+        {{#comfy}}#body{{/comfy}}
+    </clipPath>
+</defs>
+{{#set-fill}} {{vars.body_color}} | {{#comfy}}#body{{/comfy}} {{/set-fill}}
+
+{{! Blanket }}
+{{#comfy}}#blanket-line{{/comfy}}
+{{#comfy}}#blanket{{/comfy}}
+
+{{! Right ear }}
+{{#set-fill}} {{vars.ear_color}} | {{#comfy}}#right-ear{{/comfy}} {{/set-fill}}
+{{#set-fill}} {{vars.ear_fluff_color}} | {{#comfy}}#right-ear-fluff{{/comfy}} {{/set-fill}}
