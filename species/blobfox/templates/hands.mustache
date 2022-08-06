@@ -1,7 +1,19 @@
 <g id="hands">
     {{#tags.hands-reach}}
-        {{#set-fill}} {{vars.hand_color}} | {{#reach_aww}}#left-hand{{/reach_aww}} {{/set-fill}}
-        {{#set-fill}} {{vars.hand_color}} | {{#reach_aww}}#right-hand{{/reach_aww}} {{/set-fill}}
+        {{#set-stroke}}
+            {{vars.hand_stroke_color}} |
+            {{#set-fill}}
+                {{vars.hand_color}}
+                | {{#reach_aww}}#left-hand{{/reach_aww}}
+            {{/set-fill}}
+        {{/set-stroke}}
+        {{#set-stroke}}
+            {{vars.hand_stroke_color}} |
+            {{#set-fill}}
+                {{vars.hand_color}}
+                | {{#reach_aww}}#right-hand{{/reach_aww}}
+            {{/set-fill}}
+        {{/set-stroke}}
     {{/tags.hands-reach}}
     {{#tags.hand-3c}}
         {{#tags.holding}}

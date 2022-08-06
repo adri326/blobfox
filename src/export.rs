@@ -48,6 +48,28 @@ impl From<png::EncodingError> for ExportError {
     }
 }
 
+pub struct ExportArgs {
+    pub no_resize: bool,
+    pub dim: Vec<u32>,
+}
+
+pub fn get_usvg(svg_str: &str) -> Result<usvg::Tree, usvg::Error> {
+    let usvg_options = Options::default();
+    Tree::from_str(svg_str, &usvg_options.to_ref())
+}
+
+pub fn get_xml(svg_str: &str) -> Result<Element, xmltree::ParseError> {
+    Element::parse(svg_str.as_bytes())
+}
+
+pub fn xml_to_str(svg_xml: &Element) -> Result<String, ExportError> {
+    let mut s: Vec<u8> = Vec::new();
+
+    svg_xml.write(&mut s)?;
+
+    Ok(String::from_utf8(s)?)
+}
+
 fn get_new_bbox(svg: &Tree) -> Option<(f64, f64, f64, f64)> {
     let bbox = svg.root().calculate_bbox()?;
 
@@ -70,25 +92,45 @@ fn get_new_bbox(svg: &Tree) -> Option<(f64, f64, f64, f64)> {
     }
 }
 
-fn get_usvg(svg_str: &str) -> Result<usvg::Tree, usvg::Error> {
-    let usvg_options = Options::default();
-    Tree::from_str(svg_str, &usvg_options.to_ref())
+/// Removes all elements marked with `blobfox-ignore-size="true"`
+
+macro_rules! strip {
+    ( $name:tt, $attribute:expr ) => {
+        fn $name(svg_str: &str) -> Result<String, ExportError> {
+            let mut xml = get_xml(svg_str)?;
+
+            fn rec(element: &mut Element) {
+                // TODO: replace with Vec::drain_filter once https://github.com/rust-lang/rust/issues/43244 gets merged
+                for child in std::mem::take(&mut element.children) {
+                    match child {
+                        XMLNode::Element(mut child) => {
+                            if let Some("true") = child.attributes.get($attribute).map(|s| s.as_str()) {
+                                continue
+                            }
+
+                            rec(&mut child);
+
+                            element.children.push(XMLNode::Element(child));
+                        }
+                        child => element.children.push(child),
+                    }
+                }
+            }
+
+            rec(&mut xml);
+
+            xml_to_str(&xml)
+        }
+    }
 }
 
-fn get_xml(svg_str: &str) -> Result<Element, xmltree::ParseError> {
-    Element::parse(svg_str.as_bytes())
-}
-
-fn xml_to_str(svg_xml: &Element) -> Result<String, ExportError> {
-    let mut s: Vec<u8> = Vec::new();
-
-    svg_xml.write(&mut s)?;
-
-    Ok(String::from_utf8(s)?)
-}
+strip!(strip_ignore_size, "blobfox-ignore-size");
+strip!(strip_only_size, "blobfox-only-size");
 
 pub fn resize(svg_str: String) -> Result<String, ExportError> {
-    if let Some(new_bbox) = get_new_bbox(&get_usvg(&svg_str)?) {
+    let stripped = strip_ignore_size(&svg_str)?;
+
+    if let Some(new_bbox) = get_new_bbox(&get_usvg(&stripped)?) {
         let mut svg_xml = get_xml(&svg_str)?;
         svg_xml.attributes.insert(
             "viewBox".to_string(),
@@ -144,11 +186,13 @@ pub fn export(
     mut svg_str: String,
     output_dir: &PathBuf,
     output_name: String,
-    args: &super::Args,
+    args: &ExportArgs,
 ) -> Result<(), ExportError> {
     if !args.no_resize {
         svg_str = resize(svg_str)?;
     }
+
+    svg_str = strip_only_size(&svg_str)?;
 
     svg_str = combine_defs(svg_str)?;
 

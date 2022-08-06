@@ -1,0 +1,4 @@
+name = "snuggle"
+dx = -60
+dy = -40
+transform = "scale(1.02 1.02) translate(-1.5 -1)"

@@ -1,9 +1,10 @@
-use super::*;
+use crate::parse::SpeciesDecl;
 use mustache::{Context, Data, MapBuilder, PartialLoader, Template};
 use std::collections::HashMap;
 use std::path::Path;
 use std::sync::{Arc, Mutex};
 use xmltree::{Element, XMLNode};
+use css_color_parser::Color as CssColor;
 
 #[derive(Debug, Clone)]
 pub struct RenderingContext {
@@ -90,39 +91,45 @@ impl RenderingContext {
             });
         }
 
-        let this = self.clone();
-        let variant_name_owned = variant_name.to_string();
-        builder = builder.insert_fn("set-fill", move |input| {
-            // Parse `color|xml`
-            if let [color, xml] = input.splitn(2, '|').collect::<Vec<_>>()[..] {
-                // Render `color` and `xml`
-                if let (Ok(color), Ok(xml)) = (
-                    this.render_to_string(&color, &variant_name_owned),
-                    this.render_to_string(&xml, &variant_name_owned),
-                ) {
-                    // Convert `xml` to XML
-                    match Element::parse(xml.as_bytes()) {
-                        Ok(mut xml) => {
-                            set_fill(&color.trim(), &mut xml);
+        for (cb, name) in [
+            (set_fill as fn(&str, &mut Element), "set-fill"),
+            (set_stroke, "set-stroke")
+        ] {
+            let this = self.clone();
+            let variant_name_owned = variant_name.to_string();
 
-                            // Render XML to string
-                            if let Some(res) = xml_to_string(xml) {
-                                res
-                            } else {
-                                String::from("<!-- Error in stringifying xml -->")
+            builder = builder.insert_fn(name, move |input| {
+                // Parse `color|xml`
+                if let [color, xml] = input.splitn(2, '|').collect::<Vec<_>>()[..] {
+                    // Render `color` and `xml`
+                    if let (Ok(color), Ok(xml)) = (
+                        this.render_to_string(&color, &variant_name_owned),
+                        this.render_to_string(&xml, &variant_name_owned),
+                    ) {
+                        // Convert `xml` to XML
+                        match Element::parse(xml.as_bytes()) {
+                            Ok(mut xml) => {
+                                cb(&color.trim(), &mut xml);
+
+                                // Render XML to string
+                                if let Some(res) = xml_to_string(xml) {
+                                    res
+                                } else {
+                                    String::from("<!-- Error in stringifying xml -->")
+                                }
+                            }
+                            Err(err) => {
+                                format!("<!-- Error in parsing xml: {} -->", err)
                             }
                         }
-                        Err(err) => {
-                            format!("<!-- Error in parsing xml: {} -->", err)
-                        }
+                    } else {
+                        String::from("<!-- Error in parsing color or element -->")
                     }
                 } else {
-                    String::from("<!-- Error in parsing color or element -->")
+                    String::from("<!-- Invalid syntax: expected `color|xml` -->")
                 }
-            } else {
-                String::from("<!-- Invalid syntax: expected `color|xml` -->")
-            }
-        });
+            });
+        }
 
         builder = builder.insert("vars", &self.species.vars).unwrap();
 
@@ -236,33 +243,53 @@ impl PartialLoader for RenderingContext {
     }
 }
 
-fn set_fill(color: &str, xml: &mut Element) {
-    // Substitute the fill color; TODO: handle transparency for SVG 1.1
-    if let Some(style) = xml.attributes.get_mut("style") {
-        let mut new_style = Vec::new();
+macro_rules! set_color {
+    ( $fn_name:tt, $color_name:expr, $opacity_name:expr ) => {
+        pub fn $fn_name(color: &str, xml: &mut Element) {
+            let (color, opacity) = if let Ok(parsed) = color.parse::<CssColor>() {
+                (format!("#{:02x}{:02x}{:02x}", parsed.r, parsed.g, parsed.b), parsed.a)
+            } else {
+                (color.to_string(), 1.0)
+            };
 
-        for rule in style.split(';') {
-            if let [name, value] = rule.splitn(2, ':').collect::<Vec<_>>()[..] {
-                if name.trim() != "fill" && name.trim() != "fill-opacity" {
-                    new_style.push(format!("{}:{}", name, value));
+            fn rec(color: &str, opacity: f32, xml: &mut Element) {
+                if let Some(style) = xml.attributes.get_mut("style") {
+                    let mut new_style = Vec::new();
+
+                    for rule in style.split(';') {
+                        if let [name, value] = rule.splitn(2, ':').collect::<Vec<_>>()[..] {
+                            if name.trim() != $color_name && name.trim() != $opacity_name {
+                                new_style.push(format!("{}:{}", name, value));
+                            }
+                        }
+                    }
+
+                    new_style.push(format!(concat!($color_name, ": {};"), color));
+                    new_style.push(format!(concat!($opacity_name, ": {};"), opacity));
+
+                    *style = new_style.join(";");
+                }
+                if let Some(_fill) = xml.attributes.get($color_name) {
+                    xml.attributes.insert($color_name.to_string(), color.to_string());
+                }
+                if let Some(_fill) = xml.attributes.get($opacity_name) {
+                    xml.attributes.insert($opacity_name.to_string(), opacity.to_string());
+                }
+
+                for child in xml.children.iter_mut() {
+                    if let XMLNode::Element(ref mut child) = child {
+                        rec(color, opacity, child);
+                    }
                 }
             }
-        }
 
-        new_style.push(format!("fill: {};", color));
-
-        *style = new_style.join(";");
-    }
-    if let Some(_fill) = xml.attributes.get("fill") {
-        xml.attributes.insert("fill".to_string(), color.to_string());
-    }
-
-    for child in xml.children.iter_mut() {
-        if let XMLNode::Element(ref mut child) = child {
-            set_fill(color, child);
+            rec(&color, opacity, xml)
         }
     }
 }
+
+set_color!(set_fill, "fill", "fill-opacity");
+set_color!(set_stroke, "stroke", "stroke-opacity");
 
 pub fn query_selector(svg: Element, pattern: &str) -> Option<Element> {
     if pattern == "" {

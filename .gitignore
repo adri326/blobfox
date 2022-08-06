@@ -2,3 +2,4 @@ original/
 output/
 Cargo.lock
 target/
+blobfox-*.zip

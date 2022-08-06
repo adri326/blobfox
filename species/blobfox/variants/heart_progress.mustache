@@ -9,7 +9,11 @@
         </clipPath>
     </defs>
 
-    <g clip-path="url(#clip-heart)">
+    <g blobfox-only-size="true">
+        {{#heart}}#heart{{/heart}}
+    </g>
+
+    <g clip-path="url(#clip-heart)" blobfox-ignore-size="true">
         <g transform="rotate(9) scale(0.95 0.95) translate(20 50)">
             {{#flag_progress}}{{/flag_progress}}
         </g>

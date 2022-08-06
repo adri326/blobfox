@@ -1,14 +1,11 @@
 use clap::Parser;
 use std::path::PathBuf;
 
-pub mod parse;
-use parse::*;
-
-pub mod template;
-use template::*;
-
-pub mod export;
-use export::*;
+use blobfox_template::{
+    parse::*,
+    template::*,
+    export::*,
+};
 
 fn main() {
     let args = Args::parse();
@@ -30,6 +27,8 @@ fn main() {
 }
 
 fn generate_variant(context: &RenderingContext, name: &str, output_dir: &PathBuf, args: &Args) {
+    let args: ExportArgs = args.clone().into();
+
     if let Some(path) = context.species().variant_paths.get(name) {
         match context.compile(path).and_then(|template| {
             template.render_data_to_string(&context.get_data(name))
@@ -39,7 +38,7 @@ fn generate_variant(context: &RenderingContext, name: &str, output_dir: &PathBuf
                     svg,
                     output_dir,
                     format!("{}_{}", context.species().name, name),
-                    args
+                    &args
                 ) {
                     Ok(_) => {}
                     Err(err) => {
@@ -56,7 +55,7 @@ fn generate_variant(context: &RenderingContext, name: &str, output_dir: &PathBuf
     }
 }
 
-#[derive(Parser, Debug)]
+#[derive(Parser, Debug, Clone)]
 #[clap(author, version, about, long_about = None)]
 pub struct Args {
     /// A folder containing the declaration from which the emotes should be generated
@@ -78,4 +77,13 @@ pub struct Args {
     /// Output directory
     #[clap(short, long, value_parser)]
     output_dir: Option<PathBuf>,
+}
+
+impl From<Args> for ExportArgs {
+    fn from(args: Args) -> ExportArgs {
+        ExportArgs {
+            no_resize: args.no_resize,
+            dim: args.dim,
+        }
+    }
 }

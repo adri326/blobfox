@@ -41,8 +41,20 @@ If you'd like to help, there are a few things that need attention outside of imp
     - german shepherd
     - collie
     - sheep
+    - bird
     - etc.
 - clean up the SVG for the existing emotes (the `clean` binary in `feat/template` is meant to do the heavy-lifting)
+
+### TODO
+
+- set_stroke!
+- blobfox_ohmy
+- blobfox_trumpet
+- blobfox_highfive
+- googly eyes?
+- tea/coffee
+- sad
+- uwu
 
 ## License
 

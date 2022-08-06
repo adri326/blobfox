@@ -6,6 +6,7 @@ body_color = "#ff8702"
 ear_color = "#313131"
 ear_fluff_color = "#ebdccc"
 hand_color = "#ff8702"
+hand_stroke_color = "#313131"
 tail_color = "#ff8702"
 
 [variants]
@@ -51,3 +52,7 @@ heart_enby = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", 
 heart_ace = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 heart_demisexual = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 heart_pan = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
+
+# Snuggle
+snuggle_right = ["body-snuggle", "eyes-snuggle", "mouth-w"]
+snuggle_right_shadow = ["body-snuggle", "eyes-snuggle", "mouth-w"]
