@@ -1,0 +1,10 @@
+name = "blobhusky"
+base = "../blobfox/"
+
+[vars]
+body_color = "#6b6b6f"
+ear_color = "#313131"
+ear_fluff_color = "#e1e1e3"
+hand_color = "#e1e1e3"
+tail_color = "#e1e1e3"
+marks_color = "#e1e1e3"

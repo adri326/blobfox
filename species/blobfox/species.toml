@@ -41,6 +41,7 @@ comfy_aww = ["body-comfy", "eyes-aww", "mouth-w"]
 comfy_boop = ["body-comfy", "boop", "eyes-basic", "mouth-w"]
 
 stabby = ["body-basic", "holding", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
+gordon = ["body-basic", "holding", "eyes-basic", "mouth-w", "hand-3c", "left-hand"]
 
 blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]
 

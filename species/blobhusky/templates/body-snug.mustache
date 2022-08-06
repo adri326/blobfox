@@ -14,21 +14,15 @@
     {{#set-fill}} {{vars.ear_color}} | {{#snug}}#right-ear{{/snug}} {{/set-fill}}
     {{#set-fill}} {{vars.ear_fluff_color}} | {{#snug}}#right-ear-fluff{{/snug}} {{/set-fill}}
 
-    {{#tags.tail}}
-        {{>tail}}
-    {{/tags.tail}}
-</g>
-
-<!-- Following is a list of transforms to approximate the snug version using the base version
-    <g id="new" transform="scale(1 0.88) translate(0 7.5)">
-        <g id="left-ear" transform="rotate(5 25 20.7) translate(0 0.75) scale(1 1.2)">
-            {{#base}}#left-ear{{/base}}
-        </g>
-        {{#base}}#body{{/base}}
-        {{#base}}#hair{{/base}}
-        <g id="right-ear" transform="rotate(5 109.6 18.9) translate(-1.9 6.05)">
-            {{#base}}#right-ear{{/base}}
-            {{#base}}#right-ear-fluff{{/base}}
+    <g clip-path="url(#body-clip)" blobfox-ignore-size="true">
+        <g transform="scale(0.97 0.97) translate(0 1)">
+            {{#set-fill}} {{vars.marks_color}} | {{#base}}#marks{{/base}} {{/set-fill}}
         </g>
     </g>
--->
+
+    {{#tags.tail}}
+        <g id="tail">
+            {{#set-fill}} {{vars.tail_color}} | {{#snug}}#tail{{/snug}} {{/set-fill}}
+        </g>
+    {{/tags.tail}}
+</g>
