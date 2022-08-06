@@ -1,4 +1,4 @@
-use crate::parse::SpeciesDecl;
+use crate::parse::{SpeciesDecl, parse_css};
 use mustache::{Context, Data, MapBuilder, PartialLoader, Template};
 use std::collections::HashMap;
 use std::path::Path;
@@ -256,11 +256,9 @@ macro_rules! set_color {
                 if let Some(style) = xml.attributes.get_mut("style") {
                     let mut new_style = Vec::new();
 
-                    for rule in style.split(';') {
-                        if let [name, value] = rule.splitn(2, ':').collect::<Vec<_>>()[..] {
-                            if name.trim() != $color_name && name.trim() != $opacity_name {
-                                new_style.push(format!("{}:{}", name, value));
-                            }
+                    for (name, value) in parse_css(style) {
+                        if name != $color_name && name != $opacity_name {
+                            new_style.push(format!("{}:{}", name, value));
                         }
                     }
 

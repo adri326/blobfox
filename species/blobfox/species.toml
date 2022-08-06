@@ -14,6 +14,7 @@ base = ["body-basic", "eyes-basic", "mouth-w"]
 happy = ["body-basic", "eyes-happy", "mouth-w"]
 evil = ["body-basic", "eyes-evil", "mouth-w"]
 owo = ["body-basic", "ear-owo", "eyes-owo", "mouth-w"]
+aww = ["body-basic", "eyes-aww", "mouth-w"]
 
 "3c" = ["body-basic", "eyes-basic", "mouth-w", "hand-3c", "left-hand"]
 "3c_evil" = ["body-basic", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
@@ -54,5 +55,6 @@ heart_demisexual = ["body-basic", "eyes-basic", "left-hand", "right-hand", "hold
 heart_pan = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 
 # Snuggle
+snuggle_left = ["body-basic", "eyes-closed", "mouth-w"]
 snuggle_right = ["body-snuggle", "eyes-snuggle", "mouth-w"]
-snuggle_right_shadow = ["body-snuggle", "eyes-snuggle", "mouth-w"]
+snuggle_right_blush = ["body-snuggle", "eyes-snuggle", "mouth-w", "blush"]

@@ -126,3 +126,18 @@ fn read_dir_xml(path: impl AsRef<Path>) -> HashMap<String, PathBuf> {
 
     res
 }
+
+pub fn parse_css<'b>(css: &'b str) -> impl Iterator<Item=(&'b str, &'b str)> + 'b {
+    css.split(';').filter_map(|rule| {
+        let mut iter = rule.splitn(2, ':');
+        if let Some(name) = iter.next() {
+            if let Some(value) = iter.next() {
+                Some((name.trim(), value))
+            } else {
+                None
+            }
+        } else {
+            None
+        }
+    })
+}
