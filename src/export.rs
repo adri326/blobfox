@@ -185,7 +185,8 @@ pub fn combine_defs(svg_str: String) -> Result<String, ExportError> {
 pub fn export(
     mut svg_str: String,
     output_dir: &PathBuf,
-    output_name: String,
+    species_name: &str,
+    output_name: &str,
     args: &ExportArgs,
 ) -> Result<(), ExportError> {
     if !args.no_resize {
@@ -196,15 +197,15 @@ pub fn export(
 
     svg_str = combine_defs(svg_str)?;
 
-    mkdirp::mkdirp(output_dir.join("vector")).unwrap();
+    mkdirp::mkdirp(output_dir.join(format!("vector/{}", species_name))).unwrap();
 
-    let output = output_dir.join(&format!("vector/{}.svg", output_name));
+    let output = output_dir.join(&format!("vector/{}/{}.svg", species_name, output_name));
     std::fs::write(output.clone(), svg_str.clone()).map_err(|err| ExportError::Io(output, err))?;
 
     let svg_usvg = get_usvg(&svg_str)?;
     for resolution in args.dim.iter().copied().filter(|r| *r != 0).collect::<HashSet<_>>() {
-        mkdirp::mkdirp(output_dir.join(&format!("{}", resolution))).unwrap();
-        let output = output_dir.join(&format!("{}/{}.png", resolution, output_name));
+        mkdirp::mkdirp(output_dir.join(&format!("{}/{}", resolution, species_name))).unwrap();
+        let output = output_dir.join(&format!("{}/{}/{}.png", resolution, species_name, output_name));
 
         let mut image = tiny_skia::Pixmap::new(resolution, resolution).unwrap();
 
