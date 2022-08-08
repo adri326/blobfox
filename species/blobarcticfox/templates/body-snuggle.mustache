@@ -3,10 +3,11 @@
 
 {{! Body }}
 <defs>
-    <clipPath id="body-snuggle-clip">
+    <clipPath id="body-clip">
         {{#snuggle_right}}#body{{/snuggle_right}}
     </clipPath>
 </defs>
+{{#set-fill}} {{vars.sheen_color}} | {{#snuggle_right}}#body-sheen{{/snuggle_right}} {{/set-fill}}
 {{#set-fill}} {{vars.body_color}} | {{#snuggle_right}}#body{{/snuggle_right}} {{/set-fill}}
 {{#set-fill}} {{vars.body_color}} | {{#snuggle_right}}#hair{{/snuggle_right}} {{/set-fill}}
 

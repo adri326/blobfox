@@ -15,24 +15,48 @@
             {{/set-fill}}
         {{/set-stroke}}
     {{/tags.hands-reach}}
+
     {{#tags.hand-3c}}
         {{#tags.holding}}
-            {{#set-fill}} {{vars.hand_color}} | {{#knife}}#left-hand{{/knife}} {{/set-fill}}
+            {{#set-stroke}}
+                {{vars.hand_stroke_color}} |
+                {{#set-fill}} {{vars.hand_color}} | {{#knife}}#left-hand{{/knife}} {{/set-fill}}
+            {{/set-stroke}}
         {{/tags.holding}}
         {{^tags.holding}}
             {{! :3c hand }}
-            {{#set-fill}} {{vars.hand_color}} | {{#3c_evil}}#left-hand{{/3c_evil}} {{/set-fill}}
+
+            {{#set-stroke}}
+                {{vars.hand_stroke_color}} |
+                {{#set-fill}} {{vars.hand_color}} | {{#3c_evil}}#left-hand{{/3c_evil}} {{/set-fill}}
+            {{/set-stroke}}
         {{/tags.holding}}
     {{/tags.hand-3c}}
     {{^tags.hand-3c}}
         {{#tags.holding}}
             {{#tags.left-hand}}
-                {{#set-fill}} {{vars.hand_color}} | {{#heart}}#left-hand{{/heart}} {{/set-fill}}
+                {{#set-stroke}}
+                    {{vars.hand_stroke_color}} |
+                    {{#set-fill}} {{vars.hand_color}} | {{#heart}}#left-hand{{/heart}} {{/set-fill}}
+                {{/set-stroke}}
             {{/tags.left-hand}}
 
             {{#tags.right-hand}}
-                {{#set-fill}} {{vars.hand_color}} | {{#heart}}#right-hand{{/heart}} {{/set-fill}}
+                {{#tags.hand-cup}}
+                    {{#set-stroke}}
+                        {{vars.hand_stroke_color}} |
+                        {{#set-fill}} {{vars.hand_color}} | {{#coffee}}#right-hand{{/coffee}} {{/set-fill}}
+                    {{/set-stroke}}
+                {{/tags.hand-cup}}
+                {{^tags.hand-cup}}
+                    {{#set-stroke}}
+                        {{vars.hand_stroke_color}} |
+                        {{#set-fill}} {{vars.hand_color}} | {{#heart}}#right-hand{{/heart}} {{/set-fill}}
+                    {{/set-stroke}}
+                {{/tags.hand-cup}}
             {{/tags.right-hand}}
         {{/tags.holding}}
     {{/tags.hand-3c}}
+
+
 </g>
