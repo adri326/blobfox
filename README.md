@@ -66,7 +66,7 @@ For simplicity, the authors of the different parts of this project have been gro
 - Feuerfuchs: [original website (down as of writing)](https://feuerfuchs.dev/), [archive](https://web.archive.org/web/20211115174913/https://www.feuerfuchs.dev/en/projects/blobfox-emojis/)
 - [LambdAurora](https://git.lambdaurora.dev/lambdaurora/), hosts [a mirror](https://git.lambdaurora.dev/lambdaurora/blobfox)
 - [Shad Amethyst](https://git.shadamethyst.xyz/adri326/)
-
+- [LostQuasar](https://github.com/LostQuasar)
 <!-- Add yourself here as you please :) -->
 <!-- If we get more people, then we can create a CONTRIBUTORS.txt file -->
 
