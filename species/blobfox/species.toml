@@ -42,6 +42,7 @@ comfy_boop = ["body-comfy", "boop", "eyes-basic", "mouth-w"]
 
 stabby = ["body-basic", "holding", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
 gordon = ["body-basic", "holding", "eyes-basic", "mouth-w", "hand-3c", "left-hand"]
+coffee = ["body-basic", "holding", "eyes-basic", "mouth-w", "hand-cup", "right-hand"]
 
 blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]
 

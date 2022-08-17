@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg5" height="128" xml:space="preserve" sodipodi:docname="coffee.svg" width="128" inkscape:version="1.1" viewBox="0 0 128 128">
+  <title id="title62790">coffee</title>
+  <sodipodi:namedview inkscape:cy="75.931259" inkscape:document-units="px" inkscape:cx="36.992152" id="namedview7" inkscape:window-maximized="1" inkscape:window-height="1058" inkscape:current-layer="layer4" pagecolor="#505050" showgrid="false" bordercolor="#ffffff" inkscape:showpageshadow="2" inkscape:window-y="0" inkscape:deskcolor="#505050" inkscape:zoom="7.9611481" inkscape:pageopacity="0" inkscape:window-x="0" borderopacity="1" inkscape:pageshadow="0" inkscape:pagecheckerboard="1" inkscape:window-width="1920" units="px">
+    <inkscape:grid type="xygrid" id="grid10"/>
+  </sodipodi:namedview>
+  <defs id="defs2"/>
+  <g id="ref" inkscape:groupmode="layer" inkscape:label="ref" style="display:inline">
+    <image preserveAspectRatio="none" inkscape:label="blobfox" id="blobfox" xlink:href="../original/blobfox.png" width="127.99999" height="127.99999" style="display:none;fill:#313131;fill-opacity:1;stroke:none;image-rendering:optimizeQuality" y="0" x="0"/>
+    <image y="-7.4412451" xlink:href="../original/blobfoxknife.png" style="display:none;image-rendering:optimizeSpeed" inkscape:label="blobfoxknife" x="-7.9759197" height="135.72025" width="135.72025" id="blobfoxknife" preserveAspectRatio="none"/>
+    <image xlink:href="../original/blobfoxcofe.png" id="blobfoxcofe" style="display:inline;image-rendering:optimizeSpeed" x="0" inkscape:label="blobfoxcofe" y="0" width="128" height="128" preserveAspectRatio="none"/>
+  </g>
+  <g inkscape:label="Features" inkscape:groupmode="layer" id="Features"/>
+  <g inkscape:groupmode="layer" id="Cup" inkscape:label="Cup">
+    <path style="display:inline;fill:#ffffff;fill-opacity:0.502791;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 33.987489,94.823405 c 0.761604,-6.286446 -5.240607,-9.615682 -8.652785,-12.565717 -3.98831,-3.448136 -1.490535,-12.129244 0.778277,-13.566227 -0.03889,2.962202 5.076839,9.471841 10.70871,10.443994 5.398537,0.931876 19.309122,2.834328 21.821006,15.403748 0.632857,3.166806 -9.07893,4.291454 -12.347342,4.355396 -3.268412,0.06394 -12.845505,0.366598 -12.307866,-4.071194 z" id="smoke" inkscape:label="smoke" sodipodi:nodetypes="sscssss"/>
+    <path style="display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" sodipodi:nodetypes="csssssc" d="m 45.392261,122.74398 c -6.860515,0.007 -14.340139,-2.06218 -16.057862,-10.65403 -1.571044,-7.85818 -2.300606,-13.441967 1.094121,-16.013995 3.394727,-2.572028 13.411241,-3.446106 16.139301,-3.469149 2.94473,-0.02487 12.43829,1.04296 14.901438,4.183393 2.416477,3.080932 2.941379,8.372341 0.87296,16.358421 -2.078813,8.02621 -9.481552,9.33957 -16.949958,9.59536 z" id="cup" inkscape:label="cup"/>
+    <path d="m 61.247504,114.53016 c 3.20131,0.12439 5.163155,-3.24345 5.399993,-5.60233 0.236838,-2.35888 -0.655263,-6.16363 -3.284204,-6.36968" id="cup-handle" style="fill:none;stroke:#ffffff;stroke-width:3.7;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none" sodipodi:nodetypes="csc" inkscape:label="cup-handle"/>
+    <ellipse cy="99.573868" id="liquid" rx="14.430361" cx="45.841797" ry="4.8101201" style="display:inline;fill:#502d16;fill-opacity:1;stroke:none;stroke-width:3.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" inkscape:label="liquid"/>
+  </g>
+  <path style="display:inline;fill:#ff8702;fill-opacity:1;stroke:#313131;stroke-width:4.20045;stroke-linecap:round;stroke-opacity:1" d="m 81.342644,103.43478 c -8.048004,-0.32941 -16.325165,-0.93068 -16.351872,6.72937 0.123212,4.65744 3.107265,7.76238 6.236738,12.56455" sodipodi:nodetypes="ccc" id="right-hand" inkscape:label="right-hand"/>
+  <metadata id="metadata30760">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Blobfox team (https://git.shadamethyst.xyz/adri326/blobfox), licensed under the Apache 2.0 License</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Feuerfuchs</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>https://git.shadamethyst.xyz/adri326/blobfox</dc:source>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Shad Amethyst</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <dc:title>coffee</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

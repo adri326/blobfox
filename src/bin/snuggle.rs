@@ -5,6 +5,7 @@ use std::path::PathBuf;
 use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
 use xmltree::{Element, XMLNode};
+use wax::{Glob, Pattern};
 
 use blobfox_template::{
     parse,
@@ -37,6 +38,43 @@ struct Desc {
     right: HashMap<String, String>,
 }
 
+#[derive(Parser, Clone)]
+#[clap(author, version, about, long_about = None)]
+struct Args {
+    /// Path to the description
+    #[clap(short, long, value_parser)]
+    desc: PathBuf,
+
+    /// Disable automatically resizing the SVG's viewBox, defaults to false
+    #[clap(short, long, value_parser, default_value = "false")]
+    no_resize: bool,
+
+    /// Dimension to export the images as; can be specified multiple times
+    #[clap(long, value_parser)]
+    dim: Vec<u32>,
+
+    /// Input directory, containing the svgs to combine
+    #[clap(short, long, value_parser)]
+    input_dir: Option<PathBuf>,
+
+    /// Output directory
+    #[clap(short, long, value_parser)]
+    output_dir: Option<PathBuf>,
+
+    /// A glob to filter which emotes to output; supports wildcards, like `blobfox_snuggle*`
+    #[clap(value_parser)]
+    glob: Option<String>,
+}
+
+impl From<Args> for export::ExportArgs {
+    fn from(args: Args) -> export::ExportArgs {
+        export::ExportArgs {
+            no_resize: args.no_resize,
+            dim: args.dim,
+        }
+    }
+}
+
 fn main() {
     let args = Args::parse();
     let input_dir = args.input_dir.clone().unwrap_or(PathBuf::from("output/vector/"));
@@ -45,6 +83,8 @@ fn main() {
     let files = std::fs::read_dir(&input_dir).unwrap_or_else(|err| {
         panic!("Couldn't read directory {}: {}", input_dir.display(), err);
     }).filter_map(|entry| {
+        std::fs::read_dir(entry.ok()?.path()).ok()
+    }).flatten().filter_map(|entry| {
         let entry = entry.ok()?;
         Some((entry.path().file_stem()?.to_str()?.to_string(), entry.path()))
     }).collect::<HashMap<_, _>>();
@@ -56,6 +96,8 @@ fn main() {
 
     let export_args: export::ExportArgs = args.clone().into();
 
+    let glob = args.glob.as_ref().map(|s| Glob::new(s).expect("Invalid parameter glob"));
+
     for (left_name, left_path) in desc.left.iter() {
         if let Some(left_path) = files.get(left_path) {
             let left = std::fs::read_to_string(left_path).unwrap_or_else(|err| {
@@ -64,6 +106,13 @@ fn main() {
 
             for (right_name, right_path) in desc.right.iter() {
                 if let Some(right_path) = files.get(right_path) {
+                    let name = format!("{}_{}_{}", left_name, desc.name, right_name);
+                    if let Some(ref glob) = &glob {
+                        if !glob.is_match(&*name) {
+                            continue // Skip this emote
+                        }
+                    }
+
                     let right = std::fs::read_to_string(&right_path).unwrap_or_else(|err| {
                         panic!("Couldn't open {}: {}", right_path.display(), err);
                     });
@@ -71,12 +120,11 @@ fn main() {
                     let snuggle = generate_snuggle(&left, &right, &desc);
                     let snuggle = export::xml_to_str(&snuggle).unwrap();
 
-                    let name = format!("{}_{}_{}", left_name, desc.name, right_name);
-
                     export::export(
                         snuggle,
                         &output_dir,
-                        name,
+                        &desc.name,
+                        &name,
                         &export_args
                     ).unwrap();
                 }
@@ -156,7 +204,7 @@ fn bolden(amount: f64, xml: &mut Element) {
             *stroke_width = format!("{}", parsed + amount);
         }
     } else if xml.attributes.contains_key("fill") {
-        xml.attributes.insert("stroke-width", amount.to_string());
+        xml.attributes.insert("stroke-width".to_string(), amount.to_string());
     }
 
     if let Some(style) = xml.attributes.get_mut("style") {
@@ -185,39 +233,6 @@ fn bolden(amount: f64, xml: &mut Element) {
     for child in xml.children.iter_mut() {
         if let XMLNode::Element(ref mut child) = child {
             bolden(amount, child);
-        }
-    }
-}
-
-#[derive(Parser, Clone)]
-#[clap(author, version, about, long_about = None)]
-struct Args {
-    /// Path to the description
-    #[clap(short, long, value_parser)]
-    desc: PathBuf,
-
-    /// Disable automatically resizing the SVG's viewBox, defaults to false
-    #[clap(short, long, value_parser, default_value = "false")]
-    no_resize: bool,
-
-    /// Dimension to export the images as; can be specified multiple times
-    #[clap(long, value_parser)]
-    dim: Vec<u32>,
-
-    /// Input directory, containing the svgs to combine
-    #[clap(short, long, value_parser)]
-    input_dir: Option<PathBuf>,
-
-    /// Output directory
-    #[clap(short, long, value_parser)]
-    output_dir: Option<PathBuf>,
-}
-
-impl From<Args> for export::ExportArgs {
-    fn from(args: Args) -> export::ExportArgs {
-        export::ExportArgs {
-            no_resize: args.no_resize,
-            dim: args.dim,
         }
     }
 }

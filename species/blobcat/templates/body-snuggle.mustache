@@ -8,8 +8,11 @@
     </clipPath>
 </defs>
 {{#set-fill}} {{vars.body_color}} | {{#snuggle_right}}#body{{/snuggle_right}} {{/set-fill}}
-{{#set-fill}} {{vars.body_color}} | {{#snuggle_right}}#hair{{/snuggle_right}} {{/set-fill}}
 
 {{! Right ear }}
 {{#set-fill}} {{vars.ear_color}} | {{#snuggle_right}}#right-ear{{/snuggle_right}} {{/set-fill}}
 {{#set-fill}} {{vars.ear_fluff_color}} | {{#snuggle_right}}#right-ear-fluff{{/snuggle_right}} {{/set-fill}}
+
+<g transform="rotate(-12 45 75)">
+    {{>whiskers}}
+</g>

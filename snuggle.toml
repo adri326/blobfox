@@ -11,6 +11,11 @@ blobfox_blush = "blobfox_blush"
 blobfox_happy = "blobfox_happy"
 blobfox_aww = "blobfox_aww"
 
+blobhusky = "blobhusky_snuggle_left"
+blobhusky_blush = "blobhusky_blush"
+blobhusky_happy = "blobhusky_happy"
+blobhusky_aww = "blobhusky_aww"
+
 blobcat = "blobcat_snuggle_left"
 blobcat_blush = "blobcat_blush"
 blobcat_happy = "blobcat_happy"
@@ -29,3 +34,30 @@ blobarcticfox_aww = "blobarcticfox_aww"
 [right]
 blobfox = "blobfox_snuggle_right"
 blobfox_blush = "blobfox_snuggle_right_blush"
+blobfox_heart = "blobfox_snuggle_right_heart"
+blobfox_blush_heart = "blobfox_snuggle_right_blush_heart"
+
+blobarcticfox = "blobarcticfox_snuggle_right"
+blobarcticfox_blush = "blobarcticfox_snuggle_right_blush"
+blobarcticfox_heart = "blobarcticfox_snuggle_right_heart"
+blobarcticfox_blush_heart = "blobarcticfox_snuggle_right_blush_heart"
+
+blobhusky = "blobhusky_snuggle_right"
+blobhusky_blush = "blobhusky_snuggle_right_blush"
+blobhusky_heart = "blobhusky_snuggle_right_heart"
+blobhusky_blush_heart = "blobhusky_snuggle_right_blush_heart"
+
+blobcat = "blobcat_snuggle_right"
+blobcat_blush = "blobcat_snuggle_right_blush"
+blobcat_heart = "blobcat_snuggle_right_heart"
+blobcat_blush_heart = "blobcat_snuggle_right_blush_heart"
+
+blobamber = "blobamber_snuggle_right"
+blobamber_blush = "blobamber_snuggle_right_blush"
+blobamber_heart = "blobamber_snuggle_right_heart"
+blobamber_blush_heart = "blobamber_snuggle_right_blush_heart"
+
+blobstella = "blobstella_snuggle_right"
+blobstella_blush = "blobstella_snuggle_right_blush"
+blobstella_heart = "blobstella_snuggle_right_heart"
+blobstella_blush_heart = "blobstella_snuggle_right_blush_heart"

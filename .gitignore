@@ -3,3 +3,4 @@ output/
 Cargo.lock
 target/
 blobfox-*.zip
+species/custom/

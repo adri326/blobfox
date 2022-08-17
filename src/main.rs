@@ -37,7 +37,8 @@ fn generate_variant(context: &RenderingContext, name: &str, output_dir: &PathBuf
                 match export(
                     svg,
                     output_dir,
-                    format!("{}_{}", context.species().name, name),
+                    &context.species().name,
+                    &format!("{}_{}", context.species().name, name),
                     &args
                 ) {
                     Ok(_) => {}
