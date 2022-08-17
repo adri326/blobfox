@@ -1,0 +1,25 @@
+{{>header}}
+    {{>body}}
+
+    {{>eyes}}
+
+    <defs>
+        <clipPath id="clip-heart">
+            {{#heart}}#heart{{/heart}}
+        </clipPath>
+    </defs>
+
+    <g blobfox-only-size="true">
+        {{#heart}}#heart{{/heart}}
+    </g>
+
+    <g clip-path="url(#clip-heart)" blobfox-ignore-size="true">
+        <g transform="rotate(9) scale(1.05 1.05) translate(10 45)">
+            {{#flag_trans}}{{/flag_trans}}
+        </g>
+    </g>
+
+    {{#set-fill}} rgba(255,255,255,0.5) | {{#heart}}#heart-reflection{{/heart}} {{/set-fill}}
+
+    {{>hands}}
+{{>footer}}

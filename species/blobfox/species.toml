@@ -55,6 +55,7 @@ heart_enby = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", 
 heart_ace = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 heart_demisexual = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 heart_pan = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
+heart_trans = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 
 # Snuggle
 snuggle_left = ["body-basic", "eyes-closed", "mouth-w"]
