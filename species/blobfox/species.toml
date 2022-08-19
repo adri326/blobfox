@@ -42,7 +42,9 @@ comfy_boop = ["body-comfy", "boop", "eyes-basic", "mouth-w"]
 
 stabby = ["body-basic", "holding", "eyes-evil", "mouth-w", "hand-3c", "left-hand"]
 gordon = ["body-basic", "holding", "eyes-basic", "mouth-w", "hand-3c", "left-hand"]
+
 coffee = ["body-basic", "holding", "eyes-basic", "mouth-w", "hand-cup", "right-hand"]
+coffee_happy = ["body-basic", "holding", "eyes-happy", "mouth-w", "hand-cup", "right-hand"]
 
 blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]
 
@@ -55,6 +57,8 @@ heart_enby = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", 
 heart_ace = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 heart_demisexual = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 heart_pan = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
+heart_trans = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
+heart_agender = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 
 # Snuggle
 snuggle_left = ["body-basic", "eyes-closed", "mouth-w"]
