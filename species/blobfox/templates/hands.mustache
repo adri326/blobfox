@@ -58,5 +58,20 @@
         {{/tags.holding}}
     {{/tags.hand-3c}}
 
+    {{#tags.oh-my}}
+        {{#tags.left-hand}}
+            {{#set-stroke}}
+                {{vars.hand_stroke_color}} |
+                {{#set-fill}} {{vars.hand_color}} | {{#oh_my}}#left-hand{{/oh_my}} {{/set-fill}}
+            {{/set-stroke}}
+        {{/tags.left-hand}}
+        {{#tags.right-hand}}
+            {{#set-stroke}}
+                {{vars.hand_stroke_color}} |
+                {{#set-fill}} {{vars.hand_color}} | {{#oh_my}}#right-hand{{/oh_my}} {{/set-fill}}
+            {{/set-stroke}}
+        {{/tags.right-hand}}
+    {{/tags.oh-my}}
+
 
 </g>

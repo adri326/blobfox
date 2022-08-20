@@ -48,6 +48,8 @@ coffee_happy = ["body-basic", "holding", "eyes-happy", "mouth-w", "hand-cup", "r
 
 blush = ["body-basic", "ear-blush", "eyes-closed", "blush", "mouth-hmpf"]
 
+oh_my = ["body-basic", "eyes-basic", "left-hand", "right-hand", "oh-my"]
+
 heart = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding", "big-object"]
 egg = ["body-basic", "eyes-basic", "left-hand", "right-hand", "holding"]
 

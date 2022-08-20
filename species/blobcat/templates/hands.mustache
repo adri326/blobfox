@@ -1,3 +1,24 @@
-{{#set-fill}}
-    {{vars.hand_color}} | {{>blobfox.hands}}
-{{/set-fill}}
+{{^tags.oh-my}}
+    {{#set-fill}}
+        {{vars.hand_color}} | {{>blobfox.hands}}
+    {{/set-fill}}
+{{/tags.oh-my}}
+
+{{#tags.oh-my}}
+    {{#tags.left-hand}}
+        <g transform="translate(4 0)">
+            {{#set-stroke}}
+                {{vars.hand_stroke_color}} |
+                {{#set-fill}} {{vars.hand_color}} | {{#oh_my}}#left-hand{{/oh_my}} {{/set-fill}}
+            {{/set-stroke}}
+        </g>
+    {{/tags.left-hand}}
+    {{#tags.right-hand}}
+        <g transform="translate(-6 0)">
+            {{#set-stroke}}
+                {{vars.hand_stroke_color}} |
+                {{#set-fill}} {{vars.hand_color}} | {{#oh_my}}#right-hand{{/oh_my}} {{/set-fill}}
+            {{/set-stroke}}
+        </g>
+    {{/tags.right-hand}}
+{{/tags.oh-my}}
